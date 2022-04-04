@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Random;
 import knapsack.Solution;
 
+/**
+ * Chosses two parent solutions by
+ */
 public class ChooseFitness implements Chooser{
 
   @Override
