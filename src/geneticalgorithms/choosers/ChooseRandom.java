@@ -8,6 +8,9 @@ public class ChooseRandom implements Chooser{
 
   Random rand;
 
+  /**
+   * Chooses the parents random
+   */
   public ChooseRandom(){
     this.rand = new Random();
   }

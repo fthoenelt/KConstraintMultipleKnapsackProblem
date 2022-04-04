@@ -7,6 +7,9 @@ import knapsack.Item;
 import knapsack.Solution;
 import vlsn.GreedySolution;
 
+/**
+ *
+ */
 public class OnePointCrossover implements Crossover {
 
   boolean feasible;

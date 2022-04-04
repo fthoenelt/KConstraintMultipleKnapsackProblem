@@ -5,7 +5,8 @@ import java.util.Random;
 import knapsack.Solution;
 
 /**
- * Chosses two parent solutions by
+ * Chosses two parent solutions by RouletteWheelSelection where every individual in the population gets a space on an "RouletteWheel" proportional to its fitness.
+ * Parents are then choosen by calculating a random point on the wheel
  */
 public class ChooseFitness implements Chooser{
 
