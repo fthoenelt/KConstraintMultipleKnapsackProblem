@@ -1,0 +1,326 @@
+zimpl	v       0	x#1#1   	"x#1#1"
+zimpl	v       1	x#1#2   	"x#1#2"
+zimpl	v       2	x#1#3   	"x#1#3"
+zimpl	v       3	x#1#4   	"x#1#4"
+zimpl	v       4	x#1#5   	"x#1#5"
+zimpl	v       5	x#1#6   	"x#1#6"
+zimpl	v       6	x#1#7   	"x#1#7"
+zimpl	v       7	x#1#8   	"x#1#8"
+zimpl	v       8	x#1#9   	"x#1#9"
+zimpl	v       9	x#1#10  	"x#1#10"
+zimpl	v      10	x#1#11  	"x#1#11"
+zimpl	v      11	x#1#12  	"x#1#12"
+zimpl	v      12	x#1#13  	"x#1#13"
+zimpl	v      13	x#1#14  	"x#1#14"
+zimpl	v      14	x#1#15  	"x#1#15"
+zimpl	v      15	x#1#16  	"x#1#16"
+zimpl	v      16	x#1#17  	"x#1#17"
+zimpl	v      17	x#1#18  	"x#1#18"
+zimpl	v      18	x#1#19  	"x#1#19"
+zimpl	v      19	x#1#20  	"x#1#20"
+zimpl	v      20	x#1#21  	"x#1#21"
+zimpl	v      21	x#1#22  	"x#1#22"
+zimpl	v      22	x#1#23  	"x#1#23"
+zimpl	v      23	x#1#24  	"x#1#24"
+zimpl	v      24	x#1#25  	"x#1#25"
+zimpl	v      25	x#1#26  	"x#1#26"
+zimpl	v      26	x#1#27  	"x#1#27"
+zimpl	v      27	x#1#28  	"x#1#28"
+zimpl	v      28	x#1#29  	"x#1#29"
+zimpl	v      29	x#1#30  	"x#1#30"
+zimpl	v      30	x#1#31  	"x#1#31"
+zimpl	v      31	x#1#32  	"x#1#32"
+zimpl	v      32	x#1#33  	"x#1#33"
+zimpl	v      33	x#1#34  	"x#1#34"
+zimpl	v      34	x#1#35  	"x#1#35"
+zimpl	v      35	x#1#36  	"x#1#36"
+zimpl	v      36	x#1#37  	"x#1#37"
+zimpl	v      37	x#1#38  	"x#1#38"
+zimpl	v      38	x#1#39  	"x#1#39"
+zimpl	v      39	x#1#40  	"x#1#40"
+zimpl	v      40	x#1#41  	"x#1#41"
+zimpl	v      41	x#1#42  	"x#1#42"
+zimpl	v      42	x#1#43  	"x#1#43"
+zimpl	v      43	x#1#44  	"x#1#44"
+zimpl	v      44	x#1#45  	"x#1#45"
+zimpl	v      45	x#1#46  	"x#1#46"
+zimpl	v      46	x#1#47  	"x#1#47"
+zimpl	v      47	x#1#48  	"x#1#48"
+zimpl	v      48	x#1#49  	"x#1#49"
+zimpl	v      49	x#1#50  	"x#1#50"
+zimpl	v      50	x#2#1   	"x#2#1"
+zimpl	v      51	x#2#2   	"x#2#2"
+zimpl	v      52	x#2#3   	"x#2#3"
+zimpl	v      53	x#2#4   	"x#2#4"
+zimpl	v      54	x#2#5   	"x#2#5"
+zimpl	v      55	x#2#6   	"x#2#6"
+zimpl	v      56	x#2#7   	"x#2#7"
+zimpl	v      57	x#2#8   	"x#2#8"
+zimpl	v      58	x#2#9   	"x#2#9"
+zimpl	v      59	x#2#10  	"x#2#10"
+zimpl	v      60	x#2#11  	"x#2#11"
+zimpl	v      61	x#2#12  	"x#2#12"
+zimpl	v      62	x#2#13  	"x#2#13"
+zimpl	v      63	x#2#14  	"x#2#14"
+zimpl	v      64	x#2#15  	"x#2#15"
+zimpl	v      65	x#2#16  	"x#2#16"
+zimpl	v      66	x#2#17  	"x#2#17"
+zimpl	v      67	x#2#18  	"x#2#18"
+zimpl	v      68	x#2#19  	"x#2#19"
+zimpl	v      69	x#2#20  	"x#2#20"
+zimpl	v      70	x#2#21  	"x#2#21"
+zimpl	v      71	x#2#22  	"x#2#22"
+zimpl	v      72	x#2#23  	"x#2#23"
+zimpl	v      73	x#2#24  	"x#2#24"
+zimpl	v      74	x#2#25  	"x#2#25"
+zimpl	v      75	x#2#26  	"x#2#26"
+zimpl	v      76	x#2#27  	"x#2#27"
+zimpl	v      77	x#2#28  	"x#2#28"
+zimpl	v      78	x#2#29  	"x#2#29"
+zimpl	v      79	x#2#30  	"x#2#30"
+zimpl	v      80	x#2#31  	"x#2#31"
+zimpl	v      81	x#2#32  	"x#2#32"
+zimpl	v      82	x#2#33  	"x#2#33"
+zimpl	v      83	x#2#34  	"x#2#34"
+zimpl	v      84	x#2#35  	"x#2#35"
+zimpl	v      85	x#2#36  	"x#2#36"
+zimpl	v      86	x#2#37  	"x#2#37"
+zimpl	v      87	x#2#38  	"x#2#38"
+zimpl	v      88	x#2#39  	"x#2#39"
+zimpl	v      89	x#2#40  	"x#2#40"
+zimpl	v      90	x#2#41  	"x#2#41"
+zimpl	v      91	x#2#42  	"x#2#42"
+zimpl	v      92	x#2#43  	"x#2#43"
+zimpl	v      93	x#2#44  	"x#2#44"
+zimpl	v      94	x#2#45  	"x#2#45"
+zimpl	v      95	x#2#46  	"x#2#46"
+zimpl	v      96	x#2#47  	"x#2#47"
+zimpl	v      97	x#2#48  	"x#2#48"
+zimpl	v      98	x#2#49  	"x#2#49"
+zimpl	v      99	x#2#50  	"x#2#50"
+zimpl	v     100	x#3#1   	"x#3#1"
+zimpl	v     101	x#3#2   	"x#3#2"
+zimpl	v     102	x#3#3   	"x#3#3"
+zimpl	v     103	x#3#4   	"x#3#4"
+zimpl	v     104	x#3#5   	"x#3#5"
+zimpl	v     105	x#3#6   	"x#3#6"
+zimpl	v     106	x#3#7   	"x#3#7"
+zimpl	v     107	x#3#8   	"x#3#8"
+zimpl	v     108	x#3#9   	"x#3#9"
+zimpl	v     109	x#3#10  	"x#3#10"
+zimpl	v     110	x#3#11  	"x#3#11"
+zimpl	v     111	x#3#12  	"x#3#12"
+zimpl	v     112	x#3#13  	"x#3#13"
+zimpl	v     113	x#3#14  	"x#3#14"
+zimpl	v     114	x#3#15  	"x#3#15"
+zimpl	v     115	x#3#16  	"x#3#16"
+zimpl	v     116	x#3#17  	"x#3#17"
+zimpl	v     117	x#3#18  	"x#3#18"
+zimpl	v     118	x#3#19  	"x#3#19"
+zimpl	v     119	x#3#20  	"x#3#20"
+zimpl	v     120	x#3#21  	"x#3#21"
+zimpl	v     121	x#3#22  	"x#3#22"
+zimpl	v     122	x#3#23  	"x#3#23"
+zimpl	v     123	x#3#24  	"x#3#24"
+zimpl	v     124	x#3#25  	"x#3#25"
+zimpl	v     125	x#3#26  	"x#3#26"
+zimpl	v     126	x#3#27  	"x#3#27"
+zimpl	v     127	x#3#28  	"x#3#28"
+zimpl	v     128	x#3#29  	"x#3#29"
+zimpl	v     129	x#3#30  	"x#3#30"
+zimpl	v     130	x#3#31  	"x#3#31"
+zimpl	v     131	x#3#32  	"x#3#32"
+zimpl	v     132	x#3#33  	"x#3#33"
+zimpl	v     133	x#3#34  	"x#3#34"
+zimpl	v     134	x#3#35  	"x#3#35"
+zimpl	v     135	x#3#36  	"x#3#36"
+zimpl	v     136	x#3#37  	"x#3#37"
+zimpl	v     137	x#3#38  	"x#3#38"
+zimpl	v     138	x#3#39  	"x#3#39"
+zimpl	v     139	x#3#40  	"x#3#40"
+zimpl	v     140	x#3#41  	"x#3#41"
+zimpl	v     141	x#3#42  	"x#3#42"
+zimpl	v     142	x#3#43  	"x#3#43"
+zimpl	v     143	x#3#44  	"x#3#44"
+zimpl	v     144	x#3#45  	"x#3#45"
+zimpl	v     145	x#3#46  	"x#3#46"
+zimpl	v     146	x#3#47  	"x#3#47"
+zimpl	v     147	x#3#48  	"x#3#48"
+zimpl	v     148	x#3#49  	"x#3#49"
+zimpl	v     149	x#3#50  	"x#3#50"
+zimpl	v     150	x#4#1   	"x#4#1"
+zimpl	v     151	x#4#2   	"x#4#2"
+zimpl	v     152	x#4#3   	"x#4#3"
+zimpl	v     153	x#4#4   	"x#4#4"
+zimpl	v     154	x#4#5   	"x#4#5"
+zimpl	v     155	x#4#6   	"x#4#6"
+zimpl	v     156	x#4#7   	"x#4#7"
+zimpl	v     157	x#4#8   	"x#4#8"
+zimpl	v     158	x#4#9   	"x#4#9"
+zimpl	v     159	x#4#10  	"x#4#10"
+zimpl	v     160	x#4#11  	"x#4#11"
+zimpl	v     161	x#4#12  	"x#4#12"
+zimpl	v     162	x#4#13  	"x#4#13"
+zimpl	v     163	x#4#14  	"x#4#14"
+zimpl	v     164	x#4#15  	"x#4#15"
+zimpl	v     165	x#4#16  	"x#4#16"
+zimpl	v     166	x#4#17  	"x#4#17"
+zimpl	v     167	x#4#18  	"x#4#18"
+zimpl	v     168	x#4#19  	"x#4#19"
+zimpl	v     169	x#4#20  	"x#4#20"
+zimpl	v     170	x#4#21  	"x#4#21"
+zimpl	v     171	x#4#22  	"x#4#22"
+zimpl	v     172	x#4#23  	"x#4#23"
+zimpl	v     173	x#4#24  	"x#4#24"
+zimpl	v     174	x#4#25  	"x#4#25"
+zimpl	v     175	x#4#26  	"x#4#26"
+zimpl	v     176	x#4#27  	"x#4#27"
+zimpl	v     177	x#4#28  	"x#4#28"
+zimpl	v     178	x#4#29  	"x#4#29"
+zimpl	v     179	x#4#30  	"x#4#30"
+zimpl	v     180	x#4#31  	"x#4#31"
+zimpl	v     181	x#4#32  	"x#4#32"
+zimpl	v     182	x#4#33  	"x#4#33"
+zimpl	v     183	x#4#34  	"x#4#34"
+zimpl	v     184	x#4#35  	"x#4#35"
+zimpl	v     185	x#4#36  	"x#4#36"
+zimpl	v     186	x#4#37  	"x#4#37"
+zimpl	v     187	x#4#38  	"x#4#38"
+zimpl	v     188	x#4#39  	"x#4#39"
+zimpl	v     189	x#4#40  	"x#4#40"
+zimpl	v     190	x#4#41  	"x#4#41"
+zimpl	v     191	x#4#42  	"x#4#42"
+zimpl	v     192	x#4#43  	"x#4#43"
+zimpl	v     193	x#4#44  	"x#4#44"
+zimpl	v     194	x#4#45  	"x#4#45"
+zimpl	v     195	x#4#46  	"x#4#46"
+zimpl	v     196	x#4#47  	"x#4#47"
+zimpl	v     197	x#4#48  	"x#4#48"
+zimpl	v     198	x#4#49  	"x#4#49"
+zimpl	v     199	x#4#50  	"x#4#50"
+zimpl	v     200	x#5#1   	"x#5#1"
+zimpl	v     201	x#5#2   	"x#5#2"
+zimpl	v     202	x#5#3   	"x#5#3"
+zimpl	v     203	x#5#4   	"x#5#4"
+zimpl	v     204	x#5#5   	"x#5#5"
+zimpl	v     205	x#5#6   	"x#5#6"
+zimpl	v     206	x#5#7   	"x#5#7"
+zimpl	v     207	x#5#8   	"x#5#8"
+zimpl	v     208	x#5#9   	"x#5#9"
+zimpl	v     209	x#5#10  	"x#5#10"
+zimpl	v     210	x#5#11  	"x#5#11"
+zimpl	v     211	x#5#12  	"x#5#12"
+zimpl	v     212	x#5#13  	"x#5#13"
+zimpl	v     213	x#5#14  	"x#5#14"
+zimpl	v     214	x#5#15  	"x#5#15"
+zimpl	v     215	x#5#16  	"x#5#16"
+zimpl	v     216	x#5#17  	"x#5#17"
+zimpl	v     217	x#5#18  	"x#5#18"
+zimpl	v     218	x#5#19  	"x#5#19"
+zimpl	v     219	x#5#20  	"x#5#20"
+zimpl	v     220	x#5#21  	"x#5#21"
+zimpl	v     221	x#5#22  	"x#5#22"
+zimpl	v     222	x#5#23  	"x#5#23"
+zimpl	v     223	x#5#24  	"x#5#24"
+zimpl	v     224	x#5#25  	"x#5#25"
+zimpl	v     225	x#5#26  	"x#5#26"
+zimpl	v     226	x#5#27  	"x#5#27"
+zimpl	v     227	x#5#28  	"x#5#28"
+zimpl	v     228	x#5#29  	"x#5#29"
+zimpl	v     229	x#5#30  	"x#5#30"
+zimpl	v     230	x#5#31  	"x#5#31"
+zimpl	v     231	x#5#32  	"x#5#32"
+zimpl	v     232	x#5#33  	"x#5#33"
+zimpl	v     233	x#5#34  	"x#5#34"
+zimpl	v     234	x#5#35  	"x#5#35"
+zimpl	v     235	x#5#36  	"x#5#36"
+zimpl	v     236	x#5#37  	"x#5#37"
+zimpl	v     237	x#5#38  	"x#5#38"
+zimpl	v     238	x#5#39  	"x#5#39"
+zimpl	v     239	x#5#40  	"x#5#40"
+zimpl	v     240	x#5#41  	"x#5#41"
+zimpl	v     241	x#5#42  	"x#5#42"
+zimpl	v     242	x#5#43  	"x#5#43"
+zimpl	v     243	x#5#44  	"x#5#44"
+zimpl	v     244	x#5#45  	"x#5#45"
+zimpl	v     245	x#5#46  	"x#5#46"
+zimpl	v     246	x#5#47  	"x#5#47"
+zimpl	v     247	x#5#48  	"x#5#48"
+zimpl	v     248	x#5#49  	"x#5#49"
+zimpl	v     249	x#5#50  	"x#5#50"
+zimpl	c       0	cap_1   	"cap_1"	0.0000000000000000e+00
+zimpl	c       1	cap_2   	"cap_2"	0.0000000000000000e+00
+zimpl	c       2	cap_3   	"cap_3"	0.0000000000000000e+00
+zimpl	c       3	cap_4   	"cap_4"	0.0000000000000000e+00
+zimpl	c       4	cap_5   	"cap_5"	0.0000000000000000e+00
+zimpl	c       5	cap_6   	"cap_6"	0.0000000000000000e+00
+zimpl	c       6	cap_7   	"cap_7"	0.0000000000000000e+00
+zimpl	c       7	cap_8   	"cap_8"	0.0000000000000000e+00
+zimpl	c       8	cap_9   	"cap_9"	0.0000000000000000e+00
+zimpl	c       9	cap_10  	"cap_10"	0.0000000000000000e+00
+zimpl	c      10	cap_11  	"cap_11"	0.0000000000000000e+00
+zimpl	c      11	cap_12  	"cap_12"	0.0000000000000000e+00
+zimpl	c      12	cap_13  	"cap_13"	0.0000000000000000e+00
+zimpl	c      13	cap_14  	"cap_14"	0.0000000000000000e+00
+zimpl	c      14	cap_15  	"cap_15"	0.0000000000000000e+00
+zimpl	c      15	cap_16  	"cap_16"	0.0000000000000000e+00
+zimpl	c      16	cap_17  	"cap_17"	0.0000000000000000e+00
+zimpl	c      17	cap_18  	"cap_18"	0.0000000000000000e+00
+zimpl	c      18	cap_19  	"cap_19"	0.0000000000000000e+00
+zimpl	c      19	cap_20  	"cap_20"	0.0000000000000000e+00
+zimpl	c      20	cap_21  	"cap_21"	0.0000000000000000e+00
+zimpl	c      21	cap_22  	"cap_22"	0.0000000000000000e+00
+zimpl	c      22	cap_23  	"cap_23"	0.0000000000000000e+00
+zimpl	c      23	cap_24  	"cap_24"	0.0000000000000000e+00
+zimpl	c      24	cap_25  	"cap_25"	0.0000000000000000e+00
+zimpl	c      25	one_1   	"one_1"	0.0000000000000000e+00
+zimpl	c      26	one_2   	"one_2"	0.0000000000000000e+00
+zimpl	c      27	one_3   	"one_3"	0.0000000000000000e+00
+zimpl	c      28	one_4   	"one_4"	0.0000000000000000e+00
+zimpl	c      29	one_5   	"one_5"	0.0000000000000000e+00
+zimpl	c      30	one_6   	"one_6"	0.0000000000000000e+00
+zimpl	c      31	one_7   	"one_7"	0.0000000000000000e+00
+zimpl	c      32	one_8   	"one_8"	0.0000000000000000e+00
+zimpl	c      33	one_9   	"one_9"	0.0000000000000000e+00
+zimpl	c      34	one_10  	"one_10"	0.0000000000000000e+00
+zimpl	c      35	one_11  	"one_11"	0.0000000000000000e+00
+zimpl	c      36	one_12  	"one_12"	0.0000000000000000e+00
+zimpl	c      37	one_13  	"one_13"	0.0000000000000000e+00
+zimpl	c      38	one_14  	"one_14"	0.0000000000000000e+00
+zimpl	c      39	one_15  	"one_15"	0.0000000000000000e+00
+zimpl	c      40	one_16  	"one_16"	0.0000000000000000e+00
+zimpl	c      41	one_17  	"one_17"	0.0000000000000000e+00
+zimpl	c      42	one_18  	"one_18"	0.0000000000000000e+00
+zimpl	c      43	one_19  	"one_19"	0.0000000000000000e+00
+zimpl	c      44	one_20  	"one_20"	0.0000000000000000e+00
+zimpl	c      45	one_21  	"one_21"	0.0000000000000000e+00
+zimpl	c      46	one_22  	"one_22"	0.0000000000000000e+00
+zimpl	c      47	one_23  	"one_23"	0.0000000000000000e+00
+zimpl	c      48	one_24  	"one_24"	0.0000000000000000e+00
+zimpl	c      49	one_25  	"one_25"	0.0000000000000000e+00
+zimpl	c      50	one_26  	"one_26"	0.0000000000000000e+00
+zimpl	c      51	one_27  	"one_27"	0.0000000000000000e+00
+zimpl	c      52	one_28  	"one_28"	0.0000000000000000e+00
+zimpl	c      53	one_29  	"one_29"	0.0000000000000000e+00
+zimpl	c      54	one_30  	"one_30"	0.0000000000000000e+00
+zimpl	c      55	one_31  	"one_31"	0.0000000000000000e+00
+zimpl	c      56	one_32  	"one_32"	0.0000000000000000e+00
+zimpl	c      57	one_33  	"one_33"	0.0000000000000000e+00
+zimpl	c      58	one_34  	"one_34"	0.0000000000000000e+00
+zimpl	c      59	one_35  	"one_35"	0.0000000000000000e+00
+zimpl	c      60	one_36  	"one_36"	0.0000000000000000e+00
+zimpl	c      61	one_37  	"one_37"	0.0000000000000000e+00
+zimpl	c      62	one_38  	"one_38"	0.0000000000000000e+00
+zimpl	c      63	one_39  	"one_39"	0.0000000000000000e+00
+zimpl	c      64	one_40  	"one_40"	0.0000000000000000e+00
+zimpl	c      65	one_41  	"one_41"	0.0000000000000000e+00
+zimpl	c      66	one_42  	"one_42"	0.0000000000000000e+00
+zimpl	c      67	one_43  	"one_43"	0.0000000000000000e+00
+zimpl	c      68	one_44  	"one_44"	0.0000000000000000e+00
+zimpl	c      69	one_45  	"one_45"	0.0000000000000000e+00
+zimpl	c      70	one_46  	"one_46"	0.0000000000000000e+00
+zimpl	c      71	one_47  	"one_47"	0.0000000000000000e+00
+zimpl	c      72	one_48  	"one_48"	0.0000000000000000e+00
+zimpl	c      73	one_49  	"one_49"	0.0000000000000000e+00
+zimpl	c      74	one_50  	"one_50"	0.0000000000000000e+00
+zimpl	o       0	profit  	"profit"
