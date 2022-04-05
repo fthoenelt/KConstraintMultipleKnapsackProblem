@@ -59,7 +59,7 @@ public class GeneticalAlgorithm {
             ratios.add(ratios.get(i-1)+ ((double) fitnesses[i]/(double) fitSum));
           }
         }
-        Chromosom p1 = population.get( (-Collections.binarySearch(ratios, random.nextDouble()) - 1));
+        Chromosom p1 = population.get((-Collections.binarySearch(ratios, random.nextDouble()) - 1));
         Chromosom p2 = population.get((-Collections.binarySearch(ratios, random.nextDouble()) - 1));
         //Select individuals
         Chromosom chromosom;
