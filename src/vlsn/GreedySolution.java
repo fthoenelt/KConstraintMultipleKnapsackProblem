@@ -11,7 +11,7 @@ import knapsack.Solution;
 
 public class GreedySolution {
   public static Solution getGreedy(KConstraintMultipleKnapsack knapsack){
-    return fillGreedy(knapsack, new Solution(knapsack), knapsack.getItems());
+    return fillGreedy(knapsack, new Solution(knapsack), new ArrayList<>(knapsack.getItems()));
   }
 
   public static Solution fillGreedy(KConstraintMultipleKnapsack knapsack, Solution solution, List<Item> items){
@@ -133,6 +133,8 @@ public class GreedySolution {
 
     }
   }
+
+
 
   private static class KnapsackRatio{
     Knapsack knapsack;

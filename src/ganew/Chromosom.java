@@ -1,5 +1,6 @@
 package ganew;
 
+import java.util.Collections;
 import java.util.List;
 import knapsack.Item;
 import knapsack.KConstraintMultipleKnapsack;
@@ -18,8 +19,8 @@ public class Chromosom {
   return this.solution;
  }
 
- public void setValue(int index, Integer value) {
-  solution.set(index, value);
+ public void swap(int index1, int index2) {
+  Collections.swap(solution, index1, index2);
  }
 
  public int getFitness(){
@@ -31,7 +32,7 @@ public class Chromosom {
    boolean fits = false;
    while(!fits){
     fits = true;
-    for(int k = 0; k < knapsack.getNrKnapsacks(); k++){
+    for(int k = 0; k < knapsack.getK(); k++){
      if(curWeight[k] + knapsack.getItem(i).getWeight(k) > knapsack.getKnapsack(curKnapsack).getCapacities(k)){
       fits = false;
       curKnapsack++;
