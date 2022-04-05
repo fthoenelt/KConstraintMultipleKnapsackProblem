@@ -1,38 +1,53 @@
 package ganew;
 
-import java.util.Arrays;
-import java.util.function.IntConsumer;
-import java.util.function.IntPredicate;
+import java.util.List;
+import knapsack.Item;
 import knapsack.KConstraintMultipleKnapsack;
 import knapsack.Knapsack;
 
 public class Chromosom {
-  private int[][] solution;
-  private KConstraintMultipleKnapsack knapsack;
+ private KConstraintMultipleKnapsack knapsack;
+ private List<Integer> solution;
 
-  public Chromosom(KConstraintMultipleKnapsack knapsack){
-    this.solution = new int[knapsack.getNrItems()][knapsack.getNrKnapsacks()];
-    this.knapsack = knapsack;
+ public Chromosom(List<Integer> solution, KConstraintMultipleKnapsack knapsack){
+  this.solution = solution;
+  this.knapsack = knapsack;
+ }
+
+ public List<Integer> getSolution(){
+  return this.solution;
+ }
+
+ public void setValue(int index, Integer value) {
+  solution.set(index, value);
+ }
+
+ public int getFitness(){
+  int fitness=0;
+  int curKnapsack = 0;
+  int[] curWeight = new int[knapsack.getK()];
+
+  for(int i: solution){
+   boolean fits = false;
+   while(!fits){
+    fits = true;
+    for(int k = 0; k < knapsack.getNrKnapsacks(); k++){
+     if(curWeight[k] + knapsack.getItem(i).getWeight(k) > knapsack.getKnapsack(curKnapsack).getCapacities(k)){
+      fits = false;
+      curKnapsack++;
+      if(curKnapsack >= knapsack.getNrKnapsacks()){
+       return fitness;
+      }
+      curWeight = new int[knapsack.getK()];
+     }
+    }
+   }
+   for (int k = 0; k < knapsack.getK(); k++){
+    curWeight[k]+= knapsack.getItem(i).getWeight(k);
+   }
+   fitness += knapsack.getItem(i).getProfit();
   }
-
-  public int[][] getSolution(){return solution;}
-
-  public boolean getFeasibility(){
-    for(int i = 0; i < knapsack.getNrKnapsacks(); i++){
-      int[] sum = new int[knapsack.getK()];
-      for(int j = 0; j < knapsack.getNrItems();j++){
-        for(int k = 0; k < knapsack.getK(); k ++){
-          sum[k]+= solution[j][i]*knapsack.getItem(j).getWeight(k);
-        }
-      }
-      for(int k = 0; k < knapsack.getK(); k++){
-        if(sum[k]>knapsack.getKnapsack(i).getCapacities(k)){return false;}
-      }
-    }
-    for(int[] row: solution){
-      if(Arrays.stream(row).sum()>1) return false;
-    }
-    return true;
+  return fitness;
   }
 
 }

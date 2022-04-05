@@ -37,7 +37,7 @@ public class RandomPopulation implements StartPopulationGenerator{
 
   private Solution generateRandom(){
     Solution c = new Solution(knapsack);
-    ///*
+    /*
     for(int i = 0; i < knapsack.getNrItems(); i++){
       Item item = knapsack.getItem(rand.nextInt(knapsack.getNrItems()));
       if(c.isUsed(item)){
@@ -55,8 +55,8 @@ public class RandomPopulation implements StartPopulationGenerator{
       }
     }
 
-   //  */
-    /*
+     */
+   // /*
     for(Item i : knapsack.getItems()){
       for(int cnt = 0; cnt < 20; cnt++){
         Knapsack k = knapsack.getKnapsack(rand.nextInt(knapsack.getNrKnapsacks()));
@@ -70,7 +70,7 @@ public class RandomPopulation implements StartPopulationGenerator{
       }
     }
 
-    */
+    //*/
     return c;
   }
 

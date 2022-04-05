@@ -1,10 +1,14 @@
 package test;
 
+import ganew.Chromosom;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import knapsack.Item;
 import knapsack.KConstraintMultipleKnapsack;
 import knapsack.Knapsack;

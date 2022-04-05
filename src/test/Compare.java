@@ -3,6 +3,7 @@ package test;
 import geneticalgorithms.GeneticalAlgorithm;
 import geneticalgorithms.choosechildren.FittestChild;
 import geneticalgorithms.choosers.ChooseFitness;
+import geneticalgorithms.choosers.ChooseRandom;
 import geneticalgorithms.choosers.Chooser;
 import geneticalgorithms.crossover.Crossover;
 import geneticalgorithms.crossover.OnePointCrossover;
@@ -31,7 +32,7 @@ public class Compare {
     final Crossover c = new OnePointCrossover(true);
     final Mutator m = new BitflipMutator(true);
     final int popSize = 1000;
-    final Chooser chooser = new ChooseFitness();
+    final Chooser chooser = new ChooseRandom();
     final int maxSize = 2000;
     StringBuilder str = new StringBuilder();
     for(int i: new int[]{50,100,200,500}){

@@ -74,7 +74,7 @@ public class GeneticalAlgorithm {
     this.oneChild = oneChild;
     this.chooseChildren = chooseChildren;
   }
-
+  //TODO: newGeneration größer!
   public Solution solve(){
     //Initialize population
     List<Solution> oldGeneration = generator.generatePopulation(this.popSize);
@@ -87,21 +87,23 @@ public class GeneticalAlgorithm {
       //Create a new, empty generation
       List<Solution> newGeneration = new ArrayList<>();
       action = false;
-      //Choose the parents of the next offspring
-      Solution[] parents = chooser.choose(oldGeneration);
-      //Get the offspring determined by crossovering the two parents
-      Solution[] children = crossover.crossover(parents[0], parents[1], crossoverProb);
-      //If one offspring was calculated
-      if(children.length==1){
-        //Mutate it with a certain probability and add it to the new generation
-        newGeneration.add((rand.nextDouble()<mutationProb)?mutator.mutate(children[0]):children[0]);
-      }else{
-        //Otherwise check if one or two offsprings are to be added
-        if(oneChild){
-          newGeneration.add((rand.nextDouble()<mutationProb)?mutator.mutate(chooseChildren.chooseChild(children)):chooseChildren.chooseChild(children));
-        }else{
-          newGeneration.add((rand.nextDouble()<mutationProb)?mutator.mutate(children[0]):children[0]);
-          newGeneration.add((rand.nextDouble()<mutationProb)?mutator.mutate(children[1]):children[1]);
+      for(int i = 0; i < popSize; i++) {
+        //Choose the parents of the next offspring
+        Solution[] parents = chooser.choose(oldGeneration);
+        //Get the offspring determined by crossovering the two parents
+        Solution[] children = crossover.crossover(parents[0], parents[1], crossoverProb);
+        //If one offspring was calculated
+        if (children.length == 1) {
+          //Mutate it with a certain probability and add it to the new generation
+          newGeneration.add((rand.nextDouble() < mutationProb) ? mutator.mutate(children[0]) : children[0]);
+        } else {
+          //Otherwise check if one or two offsprings are to be added
+          if (oneChild) {
+            newGeneration.add((rand.nextDouble() < mutationProb) ? mutator.mutate(chooseChildren.chooseChild(children)) : chooseChildren.chooseChild(children));
+          } else {
+            newGeneration.add((rand.nextDouble() < mutationProb) ? mutator.mutate(children[0]) : children[0]);
+            newGeneration.add((rand.nextDouble() < mutationProb) ? mutator.mutate(children[1]) : children[1]);
+          }
         }
       }
       //Save this new generation in a certain way
