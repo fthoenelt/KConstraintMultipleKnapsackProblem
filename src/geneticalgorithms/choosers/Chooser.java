@@ -8,5 +8,6 @@ import knapsack.Solution;
  * Chooses two parent Solutions out of a population
  */
 public interface Chooser {
-  Solution[] choose(List<Solution> pop);
+  void update(List<Solution> pop);
+  Solution[] choose();
 }

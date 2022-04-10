@@ -3,6 +3,7 @@ package geneticalgorithms;
 import geneticalgorithms.choosechildren.ChooseChildren;
 import geneticalgorithms.choosechildren.FittestChild;
 import geneticalgorithms.choosers.ChooseFitness;
+import geneticalgorithms.choosers.ChooseRandom;
 import geneticalgorithms.choosers.Chooser;
 import geneticalgorithms.crossover.Crossover;
 import geneticalgorithms.crossover.OnePointCrossover;
@@ -74,7 +75,7 @@ public class GeneticalAlgorithm {
     this.oneChild = oneChild;
     this.chooseChildren = chooseChildren;
   }
-  //TODO: newGeneration größer!
+
   public Solution solve(){
     //Initialize population
     List<Solution> oldGeneration = generator.generatePopulation(this.popSize);
@@ -87,9 +88,10 @@ public class GeneticalAlgorithm {
       //Create a new, empty generation
       List<Solution> newGeneration = new ArrayList<>();
       action = false;
+      chooser.update(oldGeneration);
       for(int i = 0; i < popSize; i++) {
         //Choose the parents of the next offspring
-        Solution[] parents = chooser.choose(oldGeneration);
+        Solution[] parents = chooser.choose();
         //Get the offspring determined by crossovering the two parents
         Solution[] children = crossover.crossover(parents[0], parents[1], crossoverProb);
         //If one offspring was calculated

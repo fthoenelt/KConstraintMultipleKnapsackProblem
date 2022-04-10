@@ -13,8 +13,16 @@ import knapsack.Solution;
  */
 public class ChooseFitness implements Chooser{
 
+  ArrayList<Double> ratios;
+  Random random;
+  List<Solution> pop;
+  public ChooseFitness(){
+    this.random = new Random();
+  }
+
   @Override
-  public Solution[] choose(List<Solution> pop) {
+  public void update(List<Solution> pop) {
+    this.pop = pop;
     double[] fitnessPerChrom = new double[pop.size()];
     double sumFit = 0.0;
 
@@ -25,7 +33,7 @@ public class ChooseFitness implements Chooser{
 
     assert sumFit !=0.0;
 
-    ArrayList<Double> ratios = new ArrayList<>(pop.size());
+    this.ratios = new ArrayList<>(pop.size());
 
     for(int i = 0; i < pop.size(); i++){
       if(i==0){
@@ -35,8 +43,11 @@ public class ChooseFitness implements Chooser{
       }
     }
 
-    Random random = new Random();
+  }
 
+  @Override
+  public Solution[] choose() {
+    assert pop != null && ratios != null;
     return new Solution[]{pop.get((-Collections.binarySearch(ratios, random.nextDouble()) - 1)), pop.get((-Collections.binarySearch(ratios, random.nextDouble()) - 1))};
   }
 }
