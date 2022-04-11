@@ -6,13 +6,8 @@ import knapsack.KConstraintMultipleKnapsack;
 
 public class CycleCrossover implements Crossover{
 
-  KConstraintMultipleKnapsack knapsack;
-
-  public CycleCrossover(KConstraintMultipleKnapsack knapsack){
-    this.knapsack = knapsack;
-  }
   @Override
-  public Chromosom crossover(Chromosom p1, Chromosom p2) {
+  public Chromosom crossover(KConstraintMultipleKnapsack knapsack,Chromosom p1, Chromosom p2) {
     Integer[] child = new Integer[knapsack.getNrItems()];
     int index = 0;
     do {

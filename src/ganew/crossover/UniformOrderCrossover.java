@@ -9,13 +9,12 @@ import knapsack.KConstraintMultipleKnapsack;
 public class UniformOrderCrossover implements Crossover{
 
   Random random;
-  KConstraintMultipleKnapsack knapsack;
-  public UniformOrderCrossover(KConstraintMultipleKnapsack knapsack){
-    this.knapsack = knapsack;
+
+  public UniformOrderCrossover(){
     this.random = new Random();
   }
   @Override
-  public Chromosom crossover(Chromosom p1, Chromosom p2) {
+  public Chromosom crossover(KConstraintMultipleKnapsack knapsack,Chromosom p1, Chromosom p2) {
     Integer[] child = new Integer[knapsack.getNrItems()];
     ArrayList<Integer> notUsed = new ArrayList<>(p2.getSolution());
     for(int i = 0; i < knapsack.getNrItems(); i++){

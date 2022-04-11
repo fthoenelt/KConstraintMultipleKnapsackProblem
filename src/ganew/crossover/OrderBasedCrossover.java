@@ -9,16 +9,14 @@ import knapsack.KConstraintMultipleKnapsack;
 
 public class OrderBasedCrossover implements Crossover{
 
-  KConstraintMultipleKnapsack knapsack;
   Random random;
 
-  public OrderBasedCrossover(KConstraintMultipleKnapsack knapsack){
-    this.knapsack = knapsack;
+  public OrderBasedCrossover(){
     this.random = new Random();
   }
 
   @Override
-  public Chromosom crossover(Chromosom p1, Chromosom p2) {
+  public Chromosom crossover(KConstraintMultipleKnapsack knapsack,Chromosom p1, Chromosom p2) {
     Integer[] child = new Integer[knapsack.getNrItems()];
     int cp1 = random.nextInt(knapsack.getNrItems());
     while(cp1 == knapsack.getNrItems()-1){

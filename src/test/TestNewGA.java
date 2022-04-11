@@ -7,13 +7,17 @@ import ganew.crossover.OrderBasedCrossover;
 import ganew.crossover.PartiallyMatchedCrossover;
 import ganew.crossover.UniformOrderCrossover;
 import ganew.population.InitializeFeasiblePopulation;
+import ganew.replacement.DeleteAllReplacer;
+import ganew.replacement.SteadyStateReplacer;
 import ganew.selection.FitnessProportional;
 import ganew.selection.RandomPool;
 import ganew.selection.TournamentSelection;
 import geneticalgorithms.stopcriterias.IterationStopper;
 import geneticalgorithms.stopcriterias.TimeStopper;
+import java.awt.PrintGraphics;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import knapsack.KConstraintMultipleKnapsack;
 import knapsack.Solution;
@@ -43,7 +47,7 @@ public class TestNewGA {
       long endGreedy = System.currentTimeMillis();
       long startGA = System.currentTimeMillis();
       Chromosom s = new GeneticalAlgorithm(knapsack, popSize, iterations, maxSize, new TimeStopper(50000), 1.0,1.0, new TournamentSelection(2), popSize,
-          new UniformOrderCrossover(knapsack)).solve();
+          new UniformOrderCrossover(), new SteadyStateReplacer(popSize/2, true, true)).solve();
       long endGA = System.currentTimeMillis();
       p+=s.getFitness();
       t+= endGA-startGA;
@@ -67,4 +71,6 @@ public class TestNewGA {
     Chromosom c = new CycleCrossover(knapsack).crossover(p1, p2);
     System.out.println(c.getSolution());
   }
+
+
 }

@@ -8,16 +8,14 @@ import java.util.Random;
 import knapsack.KConstraintMultipleKnapsack;
 
 public class PartiallyMatchedCrossover implements Crossover{
-  KConstraintMultipleKnapsack knapsack;
   Random random;
 
-  public PartiallyMatchedCrossover(KConstraintMultipleKnapsack knapsack){
-    this.knapsack = knapsack;
+  public PartiallyMatchedCrossover(){
     this.random = new Random();
   }
 
   @Override
-  public Chromosom crossover(Chromosom p1, Chromosom p2) {
+  public Chromosom crossover(KConstraintMultipleKnapsack knapsack, Chromosom p1, Chromosom p2) {
     List<Integer> child = new ArrayList<>(p1.getSolution());
     int cp1 = random.nextInt(knapsack.getNrItems());
     while(cp1 == knapsack.getNrItems()-1){

@@ -2,6 +2,7 @@ package ganew;
 
 import ganew.crossover.Crossover;
 import ganew.population.InitializeFeasiblePopulation;
+import ganew.replacement.Replacer;
 import ganew.selection.Selector;
 import geneticalgorithms.stopcriterias.StopCriteria;
 import java.util.ArrayList;
@@ -22,9 +23,10 @@ public class GeneticalAlgorithm {
   Selector selector;
   int poolSize;
   Crossover crossover;
+  Replacer replacer;
 
   public GeneticalAlgorithm(KConstraintMultipleKnapsack knapsack, int popSize, int iterations, int maxSize, StopCriteria criteria, double crossoverProb, double mutationProb,
-      Selector selector, int poolSize, Crossover crossover){
+      Selector selector, int poolSize, Crossover crossover, Replacer replacer){
     this.knapsack = knapsack;
     this.popSize = popSize;
     this.iterations = iterations;
@@ -36,6 +38,7 @@ public class GeneticalAlgorithm {
     this.selector = selector;
     this.poolSize = poolSize;
     this.crossover = crossover;
+    this.replacer = replacer;
   }
 
   /**
@@ -69,7 +72,7 @@ public class GeneticalAlgorithm {
         Chromosom chromosom;
         //Recombination
         if(random.nextDouble() < crossoverProb){
-          chromosom=crossover.crossover(p1, p2);
+          chromosom=crossover.crossover(knapsack, p1, p2);
         }else{
           chromosom = (random.nextBoolean())?p1:p2;
         }
@@ -77,7 +80,6 @@ public class GeneticalAlgorithm {
           int index1 = random.nextInt(knapsack.getNrKnapsacks());
           int index2 = random.nextInt(knapsack.getNrKnapsacks());
           chromosom.swap(index1, index2);
-
         }
         newPop.add(chromosom);
         if(chromosom.getFitness() > bestFit){
@@ -85,7 +87,7 @@ public class GeneticalAlgorithm {
           bestFit = chromosom.getFitness();
         }
       }
-      population = newPop;
+      population = replacer.replace(population, newPop, maxSize);
     }
     return best;
   }
