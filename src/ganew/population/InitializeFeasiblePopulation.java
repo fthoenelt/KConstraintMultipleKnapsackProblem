@@ -29,7 +29,6 @@ public class InitializeFeasiblePopulation {
     for(Item i: knapsack.getItems()){
       if(!s.isUsed(i)) items.add(i.getItemID());
     }
-    Chromosom c = new Chromosom(items, knapsack);
     pop.add(new Chromosom(items, knapsack));
     return pop;
   }

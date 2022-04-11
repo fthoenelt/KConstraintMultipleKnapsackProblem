@@ -12,6 +12,7 @@ import geneticalgorithms.generation.GenerationGenerator;
 import geneticalgorithms.mutators.BitflipMutator;
 import geneticalgorithms.mutators.Mutator;
 import geneticalgorithms.startpopulation.RandomPopulation;
+import geneticalgorithms.startpopulation.RandomSortedPopulation;
 import geneticalgorithms.startpopulation.StartPopulationGenerator;
 import geneticalgorithms.stopcriterias.ImprovementStopper;
 import geneticalgorithms.stopcriterias.StopCriteria;
@@ -43,7 +44,7 @@ public class GeneticalAlgorithm {
     this.knapsack = knapsack;
     this.crossover = new OnePointCrossover(true, true);
     this.mutator = new BitflipMutator(true);
-    this.generator = new RandomPopulation(knapsack);
+    this.generator = new RandomSortedPopulation(knapsack);
     this.popSize = popSize;
     this.crit = new ImprovementStopper(iterations);
     this.chooser = new ChooseFitness();

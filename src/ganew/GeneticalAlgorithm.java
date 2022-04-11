@@ -1,15 +1,13 @@
 package ganew;
 
 import ganew.population.InitializeFeasiblePopulation;
+import ganew.selection.Selector;
 import geneticalgorithms.stopcriterias.StopCriteria;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import knapsack.KConstraintMultipleKnapsack;
-import knapsack.Solution;
 
 public class GeneticalAlgorithm {
   KConstraintMultipleKnapsack knapsack;
@@ -20,8 +18,11 @@ public class GeneticalAlgorithm {
   Random random;
   double crossoverProb;
   double mutationProb;
+  Selector selector;
+  int poolSize;
 
-  public GeneticalAlgorithm(KConstraintMultipleKnapsack knapsack, int popSize, int iterations, int maxSize, StopCriteria criteria, double crossoverProb, double mutationProb){
+  public GeneticalAlgorithm(KConstraintMultipleKnapsack knapsack, int popSize, int iterations, int maxSize, StopCriteria criteria, double crossoverProb, double mutationProb,
+      Selector selector, int poolSize){
     this.knapsack = knapsack;
     this.popSize = popSize;
     this.iterations = iterations;
@@ -30,37 +31,37 @@ public class GeneticalAlgorithm {
     this.random = new Random();
     this.crossoverProb = crossoverProb;
     this.mutationProb = mutationProb;
+    this.selector = selector;
+    this.poolSize = poolSize;
   }
+
+  /**
+   * Solves the K-MKP with an genetical Algorithm based on Permutations as Chromosomes
+   *
+   * @return The best found Chromosom
+   */
   public Chromosom solve(){
+    //Get a initial population
     List<Chromosom> population = InitializeFeasiblePopulation.initializePopulation(knapsack, popSize);
+    //Stores the best found Chromosom as well as its fitness
     Chromosom best = null;
     int bestFit = 0;
-    int[] fitnesses = new int[population.size()];
-    int fitSum = 0;
+    for(Chromosom c : population){
+      if(c.getFitness() > bestFit){
+        best = c;
+        bestFit = c.getFitness();
+      }
+    }
     boolean action = false;
     while(!criteria.stop(action)){
-      //Create new pop
-      for(int i = 0; i < population.size(); i++){
-        fitnesses[i] = population.get(i).getFitness();
-        fitSum += fitnesses[i];
-        if(fitnesses[i] > bestFit){
-          bestFit=fitnesses[i];
-          best = population.get(i);
-        }
-      }
-      //Choose Parents (Completely random)
+      //Create new generation
       List<Chromosom> newPop = new ArrayList<>(popSize);
+      //Calculate fitnesses for the generation
+      List<Chromosom> matingPool = selector.createMatingPool(population, poolSize);
+      //Create individuals for the next generation
       while(newPop.size()<popSize){
-        ArrayList<Double> ratios = new ArrayList<>(population.size());
-        for(int i = 0; i < population.size(); i++){
-          if(i==0){
-            ratios.add((double) fitnesses[i]/(double) fitSum);
-          }else{
-            ratios.add(ratios.get(i-1)+ ((double) fitnesses[i]/(double) fitSum));
-          }
-        }
-        Chromosom p1 = population.get((-Collections.binarySearch(ratios, random.nextDouble()) - 1));
-        Chromosom p2 = population.get((-Collections.binarySearch(ratios, random.nextDouble()) - 1));
+        Chromosom p1 = matingPool.get(random.nextInt(poolSize));
+        Chromosom p2 = matingPool.get(random.nextInt(poolSize));;
         //Select individuals
         Chromosom chromosom;
         //Recombination
@@ -89,16 +90,13 @@ public class GeneticalAlgorithm {
           chromosom.swap(index1, index2);
 
         }
-        int fitness = chromosom.getFitness();
-        if(fitness > bestFit){
-          bestFit=fitness;
-          best = chromosom;
-        }
         newPop.add(chromosom);
+        if(chromosom.getFitness() > bestFit){
+          best = chromosom;
+          bestFit = chromosom.getFitness();
+        }
       }
       population = newPop;
-      fitnesses = new int[population.size()];
-      fitSum = 0;
     }
     return best;
   }

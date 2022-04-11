@@ -2,7 +2,10 @@ package test;
 
 import ganew.Chromosom;
 import ganew.GeneticalAlgorithm;
+import ganew.selection.FitnessProportional;
+import ganew.selection.RandomPool;
 import geneticalgorithms.stopcriterias.IterationStopper;
+import geneticalgorithms.stopcriterias.TimeStopper;
 import knapsack.KConstraintMultipleKnapsack;
 import knapsack.Solution;
 import library.KnapsackLibrary;
@@ -30,7 +33,7 @@ public class TestNewGA {
       Solution sGreedy = GreedySolution.getGreedy(knapsack);
       long endGreedy = System.currentTimeMillis();
       long startGA = System.currentTimeMillis();
-      Chromosom s = new GeneticalAlgorithm(knapsack, popSize, iterations, maxSize, new IterationStopper(iterations), 1.0,1.0).solve();
+      Chromosom s = new GeneticalAlgorithm(knapsack, popSize, iterations, maxSize, new TimeStopper(50000), 1.0,1.0, new FitnessProportional(), popSize).solve();
       long endGA = System.currentTimeMillis();
       p+=s.getFitness();
       t+= endGA-startGA;
