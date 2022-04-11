@@ -1,5 +1,6 @@
 package ganew;
 
+import ganew.crossover.Crossover;
 import ganew.population.InitializeFeasiblePopulation;
 import ganew.selection.Selector;
 import geneticalgorithms.stopcriterias.StopCriteria;
@@ -20,9 +21,10 @@ public class GeneticalAlgorithm {
   double mutationProb;
   Selector selector;
   int poolSize;
+  Crossover crossover;
 
   public GeneticalAlgorithm(KConstraintMultipleKnapsack knapsack, int popSize, int iterations, int maxSize, StopCriteria criteria, double crossoverProb, double mutationProb,
-      Selector selector, int poolSize){
+      Selector selector, int poolSize, Crossover crossover){
     this.knapsack = knapsack;
     this.popSize = popSize;
     this.iterations = iterations;
@@ -33,6 +35,7 @@ public class GeneticalAlgorithm {
     this.mutationProb = mutationProb;
     this.selector = selector;
     this.poolSize = poolSize;
+    this.crossover = crossover;
   }
 
   /**
@@ -66,21 +69,7 @@ public class GeneticalAlgorithm {
         Chromosom chromosom;
         //Recombination
         if(random.nextDouble() < crossoverProb){
-          Integer[] child = new Integer[knapsack.getNrItems()];
-          ArrayList<Integer> notUsed = new ArrayList<>(p2.getSolution());
-          for(int i = 0; i < knapsack.getNrItems(); i++){
-            if(random.nextBoolean()){
-              child[i] = p1.getSolution().get(i);
-              notUsed.remove(p1.getSolution().get(i));
-            }
-          }
-          for(int i = 0; i < child.length; i++){
-            if(child[i]==null){
-              assert !notUsed.isEmpty();
-              child[i] = notUsed.remove(0);
-            }
-          }
-          chromosom= new Chromosom(Arrays.asList(child), knapsack);
+          chromosom=crossover.crossover(p1, p2);
         }else{
           chromosom = (random.nextBoolean())?p1:p2;
         }
