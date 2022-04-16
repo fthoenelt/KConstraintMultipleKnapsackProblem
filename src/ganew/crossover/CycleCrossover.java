@@ -1,7 +1,9 @@
 package ganew.crossover;
 
 import ganew.Chromosom;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import knapsack.KConstraintMultipleKnapsack;
 
 public class CycleCrossover implements Crossover{
@@ -17,6 +19,6 @@ public class CycleCrossover implements Crossover{
     for(int i = 0; i < child.length; i++){
       if(child[i] == null) child[i] = p2.getSolution().get(i);
     }
-    return new Chromosom(List.of(child), knapsack);
+    return new Chromosom(Arrays.stream(child).collect(Collectors.toList()), knapsack);
   }
 }

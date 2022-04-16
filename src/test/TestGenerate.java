@@ -26,7 +26,7 @@ public class TestGenerate {
 
     for (Item i : knapsack.getItems()){
       for(int w : i.getWeights()){
-        assert w >=1 && w <=r;
+        assert w >=1 && w <= r;
       }
       assert i.getK()==k;
       assert 1 <=i.getProfit()&& i.getProfit()<=r;
@@ -124,5 +124,7 @@ public class TestGenerate {
       e.printStackTrace();
     }
   }
+
+
 
 }

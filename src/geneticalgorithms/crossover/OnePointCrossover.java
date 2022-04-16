@@ -27,10 +27,9 @@ public class OnePointCrossover implements Crossover {
     this.rand = new Random();
     this.fillGreedy = fillGreedy;
   }
-
+//TODO: new crossover (Zufallszahl w < m, übernehme Rucksack 1-w von p1 und w-m von p2)
   @Override
-  public Solution[] crossover(Solution chrom1, Solution chrom2, double crossoverProb) {
-    if(rand.nextDouble() < crossoverProb){
+  public Solution crossover(Solution chrom1, Solution chrom2) {
       Solution child = new Solution(chrom1.getKnapsack());
       int cut = rand.nextInt(chrom1.getKnapsack().getNrKnapsacks());
       List<Item> notUsed = new ArrayList<>();
@@ -46,10 +45,7 @@ public class OnePointCrossover implements Crossover {
       if(this.fillGreedy){
         GreedySolution.fillGreedy(chrom1.getKnapsack(), child, notUsed);
       }
-      return new Solution[]{child};
-    }else{
-      return new Solution[]{chrom1, chrom2};
-    }
+      return child;
 
   }
 

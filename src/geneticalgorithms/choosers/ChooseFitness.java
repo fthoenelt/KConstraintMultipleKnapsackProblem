@@ -13,41 +13,37 @@ import knapsack.Solution;
  */
 public class ChooseFitness implements Chooser{
 
-  ArrayList<Double> ratios;
   Random random;
-  List<Solution> pop;
+
   public ChooseFitness(){
     this.random = new Random();
   }
 
   @Override
-  public void update(List<Solution> pop) {
-    this.pop = pop;
-    double[] fitnessPerChrom = new double[pop.size()];
+  public List<Solution> createMatingPool(List<Solution> population, int size) {
+    double[] fitnessPerChrom = new double[population.size()];
     double sumFit = 0.0;
 
-    for(int i = 0; i < pop.size(); i++){
-      fitnessPerChrom[i] = pop.get(i).getProfit();
+    for(int i = 0; i < population.size(); i++){
+      fitnessPerChrom[i] = population.get(i).getProfit();
       sumFit+=fitnessPerChrom[i];
     }
 
     assert sumFit !=0.0;
 
-    this.ratios = new ArrayList<>(pop.size());
+    ArrayList<Double> ratios= new ArrayList<>(population.size());
 
-    for(int i = 0; i < pop.size(); i++){
+    for(int i = 0; i < population.size(); i++){
       if(i==0){
         ratios.add(fitnessPerChrom[i] /sumFit);
       }else{
         ratios.add(ratios.get(i-1)+(fitnessPerChrom[i] /sumFit));
       }
     }
-
-  }
-
-  @Override
-  public Solution[] choose() {
-    assert pop != null && ratios != null;
-    return new Solution[]{pop.get((-Collections.binarySearch(ratios, random.nextDouble()) - 1)), pop.get((-Collections.binarySearch(ratios, random.nextDouble()) - 1))};
+    ArrayList<Solution> matingPool = new ArrayList<>(size);
+    for(int i = 0; i < size; i++){
+      matingPool.add(population.get((-Collections.binarySearch(ratios, random.nextDouble()) - 1)));
+    }
+    return matingPool;
   }
 }

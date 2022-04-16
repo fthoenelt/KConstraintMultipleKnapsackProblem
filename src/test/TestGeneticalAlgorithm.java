@@ -109,7 +109,8 @@ public class TestGeneticalAlgorithm {
             for(KConstraintMultipleKnapsack knapsack : lib.getKnapsacks()){
               long start = System.currentTimeMillis();
               Solution s =
-                  new GeneticalAlgorithm(knapsack, crossover, mutator, new RandomPopulation(knapsack), 1000, criteria, chooser, 1500, new CutGeneration(), false, 0.9, 0.1, true, new FittestChild()).solve();
+                  new GeneticalAlgorithm(knapsack, crossover, mutator, new RandomPopulation(knapsack), 1000, criteria, chooser, 1500, new CutGeneration(), false, 0.9, 0.1, true,
+                      new FittestChild(), 1000).solve();
               long end = System.currentTimeMillis();
               profit += s.getProfit();
               time += end-start;
@@ -136,7 +137,8 @@ public class TestGeneticalAlgorithm {
         assert lib != null;
         KConstraintMultipleKnapsack k = lib.getKnapsacks().get(0);
         Solution sol =
-            new GeneticalAlgorithm(k, c, m, new RandomPopulation(k), popSize, new TimeStopper(300000), chooser, maxSize, new CutGeneration(), false, 0.9, 0.01, true, new FittestChild()).solve();
+            new GeneticalAlgorithm(k, c, m, new RandomPopulation(k), popSize, new TimeStopper(300000), chooser, maxSize, new CutGeneration(), false, 0.9, 0.01, true,
+                new FittestChild(), popSize).solve();
         System.out.println("Size: "+ i + ", instance: "+j+", value: "+ sol.getProfit());
       }
     }

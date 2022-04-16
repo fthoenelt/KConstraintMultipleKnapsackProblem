@@ -26,8 +26,6 @@ public class OrderBasedCrossover implements Crossover{
     while(cp1 == cp2){
       cp2 = cp1+ random.nextInt(knapsack.getNrItems()-cp1-1);
     }
-    System.out.println("CP1: "+cp1);
-    System.out.println("CP2: "+cp2);
     HashSet<Integer> used = new HashSet<>();
     for(int i = cp1; i <= cp2; i++){
       child[i]= p1.getSolution().get(i);

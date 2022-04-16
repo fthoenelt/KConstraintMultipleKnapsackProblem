@@ -16,8 +16,7 @@ public class RandomCrossover implements Crossover {
   }
 
   @Override
-  public Solution[] crossover(Solution chrom1, Solution chrom2, double crossoverProb) {
-    if(rand.nextDouble()<crossoverProb){
+  public Solution crossover(Solution chrom1, Solution chrom2) {
       Solution child = new Solution(chrom1.getKnapsack());
       for(Item i : child.getKnapsack().getItems()){
         boolean choose = rand.nextBoolean();
@@ -31,11 +30,7 @@ public class RandomCrossover implements Crossover {
           }
         }
       }
-      return new Solution[]{child};
-    }else{
-      return new Solution[]{chrom1, chrom2};
-    }
-
+      return child;
   }
 
   @Override

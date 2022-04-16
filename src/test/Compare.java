@@ -44,7 +44,8 @@ public class Compare {
         assert lib != null;
         KConstraintMultipleKnapsack k = lib.getKnapsacks().get(0);
         Solution sol =
-            new GeneticalAlgorithm(k, c, m, new RandomPopulation(k), popSize, new TimeStopper(300000), chooser, maxSize, new CutGeneration(), false, 0.9, 0.01, true, new FittestChild()).solve();
+            new GeneticalAlgorithm(k, c, m, new RandomPopulation(k), popSize, new TimeStopper(300000), chooser, maxSize, new CutGeneration(), false, 0.9, 0.01, true,
+                new FittestChild(), popSize).solve();
         str.append("GA profit").append(sol.getProfit()).append("\n");
         System.out.println("GA profit"+ sol.getProfit());
         Solution sol2 = new ImprovedVLSN().solve(k);

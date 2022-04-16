@@ -1,12 +1,13 @@
 package ganew;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import knapsack.KConstraintMultipleKnapsack;
 
 public class Chromosom {
  private final KConstraintMultipleKnapsack knapsack;
- private final List<Integer> solution;
+ private List<Integer> solution;
  private int fitness;
 
  public Chromosom(List<Integer> solution, KConstraintMultipleKnapsack knapsack){
@@ -15,12 +16,18 @@ public class Chromosom {
   this.fitness = updateFitness();
  }
 
+ public Chromosom(Chromosom chromosom){
+  this.solution = new ArrayList<>(chromosom.solution);
+  this.knapsack = chromosom.knapsack;
+  this.fitness = chromosom.fitness;
+ }
+
  public List<Integer> getSolution(){
   return this.solution;
  }
 
  public void swap(int index1, int index2) {
-  Collections.swap(solution, index1, index2);
+  Collections.swap(this.solution, index1, index2);
   this.fitness = updateFitness();
  }
 

@@ -14,7 +14,6 @@ import knapsack.KConstraintMultipleKnapsack;
 public class GeneticalAlgorithm {
   KConstraintMultipleKnapsack knapsack;
   int popSize;
-  int iterations;
   int maxSize;
   StopCriteria criteria;
   Random random;
@@ -25,11 +24,10 @@ public class GeneticalAlgorithm {
   Crossover crossover;
   Replacer replacer;
 
-  public GeneticalAlgorithm(KConstraintMultipleKnapsack knapsack, int popSize, int iterations, int maxSize, StopCriteria criteria, double crossoverProb, double mutationProb,
+  public GeneticalAlgorithm(KConstraintMultipleKnapsack knapsack, int popSize, int maxSize, StopCriteria criteria, double crossoverProb, double mutationProb,
       Selector selector, int poolSize, Crossover crossover, Replacer replacer){
     this.knapsack = knapsack;
     this.popSize = popSize;
-    this.iterations = iterations;
     this.maxSize = maxSize;
     this.criteria = criteria;
     this.random = new Random();
@@ -65,7 +63,7 @@ public class GeneticalAlgorithm {
       //Calculate fitnesses for the generation
       List<Chromosom> matingPool = selector.createMatingPool(population, poolSize);
       //Create individuals for the next generation
-      while(newPop.size()<popSize){
+      while(newPop.size()<=popSize){
         Chromosom p1 = matingPool.get(random.nextInt(poolSize));
         Chromosom p2 = matingPool.get(random.nextInt(poolSize));;
         //Select individuals

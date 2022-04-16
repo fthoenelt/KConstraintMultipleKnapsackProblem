@@ -25,12 +25,7 @@ public class TournamentSelection implements Selector{
       for(int index = 0; index < s; index++){
         candidates[index] = population.get(random.nextInt(population.size()));
       }
-      Optional<Chromosom> o = Arrays.stream(candidates).max(new Comparator<Chromosom>() {
-        @Override
-        public int compare(Chromosom o1, Chromosom o2) {
-          return Integer.compare(o1.getFitness(), o2.getFitness());
-        }
-      });
+      Optional<Chromosom> o = Arrays.stream(candidates).max(Comparator.comparingInt(Chromosom::getFitness));
       assert o.isPresent();
       matingPool.add(o.get());
     }

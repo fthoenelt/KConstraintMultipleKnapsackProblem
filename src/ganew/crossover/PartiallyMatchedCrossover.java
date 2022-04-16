@@ -19,14 +19,10 @@ public class PartiallyMatchedCrossover implements Crossover{
     List<Integer> child = new ArrayList<>(p1.getSolution());
     int cp1 = random.nextInt(knapsack.getNrItems());
     while(cp1 == knapsack.getNrItems()-1){
-      System.out.println("ih");
       cp1 = random.nextInt(knapsack.getNrItems());
     }
     int cp2 = cp1+ random.nextInt(knapsack.getNrItems()-cp1);
     while(cp1 == cp2){
-      System.out.println(cp1);
-      System.out.println(cp2);
-      System.out.println("----");
       cp2 = cp1+ random.nextInt(knapsack.getNrItems()-cp1);
     }
     for(int i = cp1; i <= cp2; i++){

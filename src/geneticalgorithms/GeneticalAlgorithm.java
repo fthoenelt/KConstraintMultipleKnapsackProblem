@@ -39,6 +39,7 @@ public class GeneticalAlgorithm {
   boolean oneChild;
   ChooseChildren chooseChildren;
   Random rand = new Random();
+  int poolSize;
 
   public GeneticalAlgorithm(KConstraintMultipleKnapsack knapsack, int popSize, int iterations, int maxSize){
     this.knapsack = knapsack;
@@ -55,10 +56,11 @@ public class GeneticalAlgorithm {
     this.mutationProb = 0.9;
     oneChild = true;
     this.chooseChildren = new FittestChild();
+    this.poolSize = popSize;
   }
 
   public GeneticalAlgorithm(KConstraintMultipleKnapsack knapsack, Crossover c, Mutator m, StartPopulationGenerator generator, int popSize, StopCriteria crit, Chooser chooser,
-      int maxSize, GenerationGenerator generationGenerator, boolean addBoth, double crossoverProb, double mutationProb, boolean oneChild, ChooseChildren chooseChildren){
+      int maxSize, GenerationGenerator generationGenerator, boolean addBoth, double crossoverProb, double mutationProb, boolean oneChild, ChooseChildren chooseChildren, int poolSize){
     assert c.getFeasibility()==m.getFeasibility();
     c.getFeasibility();
     this.knapsack = knapsack;
@@ -75,6 +77,7 @@ public class GeneticalAlgorithm {
     this.mutationProb=mutationProb;
     this.oneChild = oneChild;
     this.chooseChildren = chooseChildren;
+    this.poolSize = poolSize;
   }
 
   public Solution solve(){
@@ -83,48 +86,38 @@ public class GeneticalAlgorithm {
     //Save best Solution
     Solution best = new Solution(knapsack);
     int bestFit = 0;
+    for(Solution s : oldGeneration){
+      if(s.getProfit() > bestFit){
+        best = s;
+        bestFit=s.getProfit();
+      }
+    }
     boolean action = false;
     //While exit criterion not reached
     while(!crit.stop(action)){
       //Create a new, empty generation
-      List<Solution> newGeneration = new ArrayList<>();
-      action = false;
-      chooser.update(oldGeneration);
-      for(int i = 0; i < popSize; i++) {
+      List<Solution> newGeneration = new ArrayList<>(popSize);
+      List<Solution> matingPool = chooser.createMatingPool(oldGeneration, poolSize);
+      while(newGeneration.size() <= popSize) {
         //Choose the parents of the next offspring
-        Solution[] parents = chooser.choose();
+        Solution p1 = matingPool.get(rand.nextInt(poolSize));
+        Solution p2 = matingPool.get(rand.nextInt(poolSize));
         //Get the offspring determined by crossovering the two parents
-        Solution[] children = crossover.crossover(parents[0], parents[1], crossoverProb);
-        //If one offspring was calculated
-        if (children.length == 1) {
-          //Mutate it with a certain probability and add it to the new generation
-          newGeneration.add((rand.nextDouble() < mutationProb) ? mutator.mutate(children[0]) : children[0]);
-        } else {
-          //Otherwise check if one or two offsprings are to be added
-          if (oneChild) {
-            newGeneration.add((rand.nextDouble() < mutationProb) ? mutator.mutate(chooseChildren.chooseChild(children)) : chooseChildren.chooseChild(children));
-          } else {
-            newGeneration.add((rand.nextDouble() < mutationProb) ? mutator.mutate(children[0]) : children[0]);
-            newGeneration.add((rand.nextDouble() < mutationProb) ? mutator.mutate(children[1]) : children[1]);
-          }
+        Solution child;
+        if(rand.nextDouble() < crossoverProb){
+          child = crossover.crossover(p1, p2);
+        }else{
+          child = (rand.nextBoolean())?p1:p2;
         }
+        if(rand.nextDouble() < mutationProb) child = mutator.mutate(child);
+        if(child.getProfit() > bestFit && child.isFeasible()){
+          best = child;
+          bestFit = child.getProfit();
+        }
+        newGeneration.add(child);
       }
       //Save this new generation in a certain way
       oldGeneration = generationGenerator.generate(oldGeneration, newGeneration, this.maxSize);
-      //Get the best offspring in the new generation
-      Solution curBest = oldGeneration.get(0);
-      int index = 1;
-      while(!curBest.isFeasible()&&index < oldGeneration.size()){
-        curBest = oldGeneration.get(index);
-        index++;
-      }
-      //If it is the best one save it
-      int curBestFit = curBest.getProfit();
-      if(curBestFit > bestFit&&curBest.isFeasible()){
-        bestFit = curBestFit;
-        best = curBest;
-        action = true;
-      }
     }
 
     assert best.isFeasible();
