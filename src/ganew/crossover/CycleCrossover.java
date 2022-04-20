@@ -16,9 +16,11 @@ public class CycleCrossover implements Crossover{
       child[index] = p1.getSolution().get(index);
       index = p1.getSolution().indexOf(p2.getSolution().get(index));
     } while (child[index] == null);
-    for(int i = 0; i < child.length; i++){
-      if(child[i] == null) child[i] = p2.getSolution().get(i);
+    for (int i = 0; i < child.length; i++) {
+      if (child[i] == null)
+        child[i] = p2.getSolution().get(i);
     }
     return new Chromosom(Arrays.stream(child).collect(Collectors.toList()), knapsack);
+
   }
 }

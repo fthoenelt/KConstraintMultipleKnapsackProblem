@@ -19,6 +19,8 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import knapsack.KConstraintMultipleKnapsack;
 import knapsack.Solution;
 import library.KnapsackLibrary;
@@ -28,7 +30,7 @@ import vlsn.GreedySolution;
 
 public class EvaluateNewGA {
   @Test
-  public void test(){
+  public static void main(String[] args) {
     System.out.println("Starting....");
     KnapsackLibrary lib = KnapsackLibraryReader.readFile("knapsacks.ser");
     assert lib != null;
@@ -61,8 +63,16 @@ public class EvaluateNewGA {
                   double avgGreedyProfit = 0.0;
                   for(KConstraintMultipleKnapsack knapsack: lib.getKnapsacks()){
                     str.append("Knapsack Nr: ").append(i);
-                    Chromosom chromosom = new GeneticalAlgorithm(knapsack, popSize, popSize, new TimeStopper(100000), crossoverProb, mutationProb, selector,
-                        popSize, crossover, replacer).solve();
+                    Chromosom chromosom;
+                    try{
+                      chromosom = new GeneticalAlgorithm(knapsack, popSize, popSize, new TimeStopper(100000), crossoverProb, mutationProb, selector,
+                          popSize, crossover, replacer).solve();
+                      str.append("ERROR");
+                    }catch(Exception e){
+                      System.out.println(e.getMessage());
+                      chromosom = new Chromosom(IntStream.range(0, knapsack.getNrItems()).boxed().collect(Collectors.toList()),knapsack);
+                    }
+
                     avgGAProfit += chromosom.getFitness();
                     str.append("GA Profit: ").append(chromosom.getFitness());
                     Solution s = GreedySolution.getGreedy(knapsack);
