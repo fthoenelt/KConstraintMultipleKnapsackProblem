@@ -46,7 +46,7 @@ public class TestNewGA {
       Solution sGreedy = GreedySolution.getGreedy(knapsack);
       long endGreedy = System.currentTimeMillis();
       long startGA = System.currentTimeMillis();
-      Chromosom s = new GeneticalAlgorithm(knapsack, popSize, maxSize, new TimeStopper(50000), 1.0,1.0, new TournamentSelection(2), popSize,
+      Chromosom s = new GeneticalAlgorithm(knapsack, popSize, maxSize, new TimeStopper(10000), 1.0,1.0, new TournamentSelection(5), popSize,
           new UniformOrderCrossover(), new SteadyStateReplacer(true, true, 0.5)).solve();
       long endGA = System.currentTimeMillis();
       p+=s.getFitness();

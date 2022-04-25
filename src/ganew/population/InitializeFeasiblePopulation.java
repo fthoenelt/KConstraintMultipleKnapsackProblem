@@ -12,6 +12,7 @@ import knapsack.Solution;
 import vlsn.GreedySolution;
 
 public class InitializeFeasiblePopulation {
+
   public static List<Chromosom> initializePopulation(KConstraintMultipleKnapsack knapsack, int size){
     List<Chromosom> pop = new ArrayList<>(size);
     for(int i = 0; i < size-1; i++){
@@ -31,5 +32,7 @@ public class InitializeFeasiblePopulation {
     }
     pop.add(new Chromosom(items, knapsack));
     return pop;
+
+
   }
 }

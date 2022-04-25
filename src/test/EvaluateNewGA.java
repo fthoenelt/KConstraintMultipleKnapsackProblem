@@ -35,7 +35,7 @@ public class EvaluateNewGA {
     KnapsackLibrary lib = KnapsackLibraryReader.readFile("knapsacks.ser");
     assert lib != null;
     StringBuilder str = new StringBuilder();
-    Selector[] selectors = new Selector[]{new RandomPool(), new FitnessProportional(), new TournamentSelection(2), new TournamentSelection(5)};
+    Selector[] selectors = new Selector[]{new RandomPool(), new FitnessProportional(), new TournamentSelection(2)};
     Crossover[] crossovers = new Crossover[]{new CycleCrossover(), new OrderBasedCrossover(), new PartiallyMatchedCrossover(), new UniformOrderCrossover()};
     Replacer[] replacers = new Replacer[]{new DeleteAllReplacer(), new SteadyStateReplacer(false, false, 0.5),new SteadyStateReplacer(false, false, 0.7),
         new SteadyStateReplacer(false, true, 0.5), new SteadyStateReplacer(false, true, 0.7),
@@ -50,7 +50,13 @@ public class EvaluateNewGA {
           for(int popSize: popSizes){
               for(double crossoverProb: crossoverProbs){
                 for(double mutationProb: mutationProbs){
-                  System.out.println("next one...");
+                  System.out.println("---Next one---");
+                  System.out.println("Selector: "+ selector.getClass());
+                  System.out.println("Crossover: "+  crossover.getClass());
+                  System.out.println("Replacer: "+ replacer.getClass());
+                  System.out.println("popSize: "+ popSize);
+                  System.out.println("Crossover Probability: "+ crossoverProb);
+                  System.out.println("Mutation Probability: "+ mutationProb);
                   str.append("---------------");
                   str.append("Selector: ").append(selector.getClass());
                   str.append("Crossover: ").append(crossover.getClass());
@@ -65,7 +71,7 @@ public class EvaluateNewGA {
                     str.append("Knapsack Nr: ").append(i);
                     Chromosom chromosom;
                     try{
-                      chromosom = new GeneticalAlgorithm(knapsack, popSize, popSize, new TimeStopper(100000), crossoverProb, mutationProb, selector,
+                      chromosom = new GeneticalAlgorithm(knapsack, popSize, popSize, new TimeStopper(10000), crossoverProb, mutationProb, selector,
                           popSize, crossover, replacer).solve();
                       str.append("ERROR");
                     }catch(Exception e){

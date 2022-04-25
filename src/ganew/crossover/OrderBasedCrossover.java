@@ -18,11 +18,8 @@ public class OrderBasedCrossover implements Crossover{
   @Override
   public Chromosom crossover(KConstraintMultipleKnapsack knapsack,Chromosom p1, Chromosom p2) {
     Integer[] child = new Integer[knapsack.getNrItems()];
-    int cp1 = random.nextInt(knapsack.getNrItems());
-    while(cp1 == knapsack.getNrItems()-1){
-      cp1 = random.nextInt(knapsack.getNrItems());
-    }
-    int cp2 = cp1+ random.nextInt(knapsack.getNrItems()-cp1-1);
+    int cp1 = random.nextInt(knapsack.getNrItems()-2);
+    int cp2 = cp1 + random.nextInt(knapsack.getNrItems()-cp1-1);
     while(cp1 == cp2){
       cp2 = cp1+ random.nextInt(knapsack.getNrItems()-cp1-1);
     }
@@ -41,6 +38,6 @@ public class OrderBasedCrossover implements Crossover{
       child[index]= i;
       index ++;
     }
-    return new Chromosom(Arrays.stream(child).toList(), knapsack);
+    return new Chromosom(Arrays.asList(child), knapsack);
   }
 }
