@@ -97,12 +97,12 @@ public class VLSN {
     long startT = System.currentTimeMillis();
     //While G(S) contains a valid cycle (and time limit is ok) do
     Optional<ValidCycle> w = Optional.ofNullable(validCycleDetection(g, 8));
-    while (w.isPresent() && System.currentTimeMillis() - startT < 100000) {
+    while (w.isPresent() && System.currentTimeMillis() - startT < 300000) {
       assert w.get().getC() < 0;
       //Perform multi-exchange corresponding to W
       solution = solution.applyCycle(w.get());
       //Update S and G(S)
-      g = ConstructImprovementGraph.updateImprovementGraph(g, w.get(), knapsack, solution);
+      ConstructImprovementGraph.updateImprovementGraph(g, w.get(), knapsack, solution);
       w = Optional.ofNullable(validCycleDetection(g, 8));
     }
     if (w.isPresent()) {

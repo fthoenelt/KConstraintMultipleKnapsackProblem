@@ -9,6 +9,10 @@ import knapsack.KConstraintMultipleKnapsack;
 import knapsack.Solution;
 import vlsn.GreedySolution;
 
+/**
+ *
+ */
+
 public class RandomSortedPopulation implements StartPopulationGenerator{
 
   KConstraintMultipleKnapsack knapsack;

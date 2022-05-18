@@ -1,23 +1,13 @@
 package test;
 
 import ganew.Chromosom;
-import ganew.GeneticalAlgorithm;
+import ganew.PermGA;
 import ganew.crossover.CycleCrossover;
-import ganew.crossover.OrderBasedCrossover;
 import ganew.crossover.PartiallyMatchedCrossover;
-import ganew.crossover.UniformOrderCrossover;
 import ganew.population.InitializeFeasiblePopulation;
-import ganew.replacement.DeleteAllReplacer;
 import ganew.replacement.SteadyStateReplacer;
-import ganew.selection.FitnessProportional;
-import ganew.selection.RandomPool;
 import ganew.selection.TournamentSelection;
-import geneticalgorithms.stopcriterias.IterationStopper;
 import geneticalgorithms.stopcriterias.TimeStopper;
-import java.awt.PrintGraphics;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import knapsack.KConstraintMultipleKnapsack;
 import knapsack.Solution;
@@ -46,8 +36,8 @@ public class TestNewGA {
       Solution sGreedy = GreedySolution.getGreedy(knapsack);
       long endGreedy = System.currentTimeMillis();
       long startGA = System.currentTimeMillis();
-      Chromosom s = new GeneticalAlgorithm(knapsack, popSize, maxSize, new TimeStopper(10000), 1.0,1.0, new TournamentSelection(5), popSize,
-          new UniformOrderCrossover(), new SteadyStateReplacer(true, true, 0.5)).solve();
+      Chromosom s = new PermGA(knapsack, popSize, maxSize, new TimeStopper(10000), 1.0,1.0, new TournamentSelection(5), popSize,
+          new PartiallyMatchedCrossover(), new SteadyStateReplacer(true, true, 0.5)).solve();
       long endGA = System.currentTimeMillis();
       p+=s.getFitness();
       t+= endGA-startGA;

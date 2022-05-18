@@ -1,7 +1,7 @@
 package test;
 
 import ganew.Chromosom;
-import ganew.GeneticalAlgorithm;
+import ganew.PermGA;
 import ganew.crossover.Crossover;
 import ganew.crossover.CycleCrossover;
 import ganew.crossover.OrderBasedCrossover;
@@ -25,12 +25,12 @@ import knapsack.KConstraintMultipleKnapsack;
 import knapsack.Solution;
 import library.KnapsackLibrary;
 import library.KnapsackLibraryReader;
-import org.junit.Test;
 import vlsn.GreedySolution;
+import vlsn.ImprovedVLSN;
+import vlsn.VLSN;
 
 public class EvaluateNewGA {
-  @Test
-  public static void main(String[] args) {
+  public void getGAValues() {
     System.out.println("Starting....");
     KnapsackLibrary lib = KnapsackLibraryReader.readFile("knapsacks.ser");
     assert lib != null;
@@ -71,7 +71,7 @@ public class EvaluateNewGA {
                     str.append("Knapsack Nr: ").append(i);
                     Chromosom chromosom;
                     try{
-                      chromosom = new GeneticalAlgorithm(knapsack, popSize, popSize, new TimeStopper(10000), crossoverProb, mutationProb, selector,
+                      chromosom = new PermGA(knapsack, popSize, popSize, new TimeStopper(10000), crossoverProb, mutationProb, selector,
                           popSize, crossover, replacer).solve();
                       str.append("ERROR");
                     }catch(Exception e){
@@ -114,4 +114,101 @@ public class EvaluateNewGA {
     }
   }
 
+  public void test(String[] args) {
+    StringBuilder str = new StringBuilder();
+    for(int i: new int[]{50,100,200,500}){
+      for(int j = 0; j < 16; j++){
+        KnapsackLibrary lib = KnapsackLibraryReader.readFile("testinstances/knapsack"+i+
+            "nr"+j+".ser");
+        assert lib!=null;
+        double avgV1 = 0.0;
+        double avgV2 = 0.0;
+        double avgV3 = 0.0;
+        double avgV4 = 0.0;
+        double avgVLSN = 0.0;
+        double avgIVLSN = 0.0;
+        str.append("Instance: knapsack").append(i).append("nr").append(j).append(".ser \n");
+        System.out.println("Instance: knapsack"+i+"nr"+j+".ser");
+        System.out.println(lib.getKnapsacks().size());
+        for (KConstraintMultipleKnapsack k : lib.getKnapsacks().subList(0, 2)){
+
+          try{
+            Chromosom c1 = new PermGA(k, 1000, 1000, new TimeStopper(300000), 0.7, 0.01, new TournamentSelection(2), 1000, new UniformOrderCrossover(),
+                new DeleteAllReplacer()).solve();
+            avgV1 += c1.getFitness();
+
+            Chromosom c2 = new PermGA(k, 5000, 5000, new TimeStopper(300000), 1.0, 0.5, new RandomPool(), 5000, new OrderBasedCrossover(),
+                new SteadyStateReplacer(true, false, 0.5)).solve();
+            avgV2 += c2.getFitness();
+
+            Chromosom c3 = new PermGA(k, 5000, 5000, new TimeStopper(300000), 1.0, 0.01, new TournamentSelection(2), 5000, new OrderBasedCrossover(),
+                new DeleteAllReplacer()).solve();
+            avgV3 += c3.getFitness();
+
+            Chromosom c4 = new PermGA(k, 2000, 2000, new TimeStopper(300000), 1.0, 0.1, new TournamentSelection(5), 5000, new UniformOrderCrossover(),
+                new DeleteAllReplacer()).solve();
+            avgV4 += c4.getFitness();
+
+            Solution s1 = new VLSN().solve(k);
+            avgVLSN+= s1.getProfit();
+
+            Solution s2 = new ImprovedVLSN().solve(k);
+            avgIVLSN += s2.getProfit();
+
+          }catch (Exception e){
+            System.out.println("ERROR occured :(");
+            System.out.println(e.getMessage());
+          }
+        }
+        str.append("V1: ").append(avgV1/lib.getKnapsacks().size()).append("\n");
+        str.append("V2: ").append(avgV2/lib.getKnapsacks().size()).append("\n");
+        str.append("V3: ").append(avgV3/lib.getKnapsacks().size()).append("\n");
+        str.append("V4: ").append(avgV4/lib.getKnapsacks().size()).append("\n");
+        str.append("S1: ").append(avgVLSN/lib.getKnapsacks().size()).append("\n");
+        str.append("S2: ").append(avgIVLSN/lib.getKnapsacks().size()).append("\n");
+
+        if(avgV1 > avgIVLSN || avgV2 > avgIVLSN || avgV3 > avgIVLSN || avgV4 > avgIVLSN){
+          System.out.println("GA hat gewonnen");
+        }else{
+          System.out.println("VLSN hat gewonnen");
+        }
+      }
+    }
+    String data = str.toString();
+    try(FileOutputStream fos = new FileOutputStream(new File("outputComp.txt"));
+        BufferedOutputStream bos = new BufferedOutputStream(fos)) {
+      //convert string to byte array
+      byte[] bytes = data.getBytes();
+      //write byte array to file
+      bos.write(bytes);
+      bos.close();
+      fos.close();
+      System.out.print("Data written to file successfully.");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public static void main(String[] args) {
+    System.out.println("Alright lets goooooooooo!");
+    for (int i : new int[]{50, 100, 200, 500}) {
+      for (int j = 0; j < 16; j++) {
+        KnapsackLibrary lib = KnapsackLibraryReader.readFile("testinstances/knapsack" + i +
+            "nr" + j + ".ser");
+        assert lib != null;
+        KConstraintMultipleKnapsack knapsack = lib.getKnapsacks().get(0);
+        Chromosom c = new PermGA(knapsack, 5000, 5000, new TimeStopper(100000), 0.7, 0.5, new TournamentSelection(4), 5000, new CycleCrossover(),
+            new SteadyStateReplacer(true, false, 0.7)).solve();
+          Solution s = c.buildSolution();
+
+
+      }
+    }
+  }
+
 }
+
+
+
+
+

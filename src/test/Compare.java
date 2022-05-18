@@ -2,7 +2,6 @@ package test;
 
 import geneticalgorithms.GeneticalAlgorithm;
 import geneticalgorithms.choosechildren.FittestChild;
-import geneticalgorithms.choosers.ChooseFitness;
 import geneticalgorithms.choosers.ChooseRandom;
 import geneticalgorithms.choosers.Chooser;
 import geneticalgorithms.crossover.Crossover;
@@ -14,10 +13,8 @@ import geneticalgorithms.startpopulation.RandomPopulation;
 import geneticalgorithms.stopcriterias.TimeStopper;
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import knapsack.KConstraintMultipleKnapsack;
 import knapsack.Solution;
 import library.KnapsackLibrary;

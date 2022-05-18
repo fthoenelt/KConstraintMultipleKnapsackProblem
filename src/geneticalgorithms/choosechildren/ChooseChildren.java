@@ -1,11 +1,18 @@
 package geneticalgorithms.choosechildren;
 
-import java.util.Optional;
 import knapsack.Solution;
 
 /**
- * If Crossover generates more then one offspring classes implementing this interface are used to choose one offspring
+ * Interface welches ein Nachfahre aus einem Array von Nachfahren auswählt. Hierbei ist nicht spezifiziert welcher Nachfahre gewählt wird. Wird zum Beispiel verwendet, wenn bei
+ * dem Crossover mehr als ein Nachfahre erzeugt wird.
  */
 public interface ChooseChildren {
+
+  /**
+   * Wählt ein Chromosom aus einem Array von Chromosomen
+   *
+   * @param children  Array von Chromosome
+   * @return  Ein Chromosom
+   */
   Solution chooseChild(Solution[] children);
 }
