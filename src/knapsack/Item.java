@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 /**
- * Class representing an item of the k-Constraint multiple knapsack problem
+ * Klasse die ein Objekt des K-Constraint Multiple Knapsack Problems repräsentiert
  */
 public class Item implements Serializable {
 
@@ -16,11 +16,11 @@ public class Item implements Serializable {
   int[] weights;
 
   /**
-   * Constructor for the item
+   * Konstruktor für das Objekt
    *
-   * @param itemID unique itemID
-   * @param profit the profit of the item
-   * @param weights Array holding the k different weight values
+   * @param itemID Eindeutige ObjektID
+   * @param profit Profit des Objektes
+   * @param weights Gewichte des Objektes
    */
   public Item(int itemID, int profit, int[] weights) {
     this.itemID = itemID;
@@ -28,23 +28,49 @@ public class Item implements Serializable {
     this.weights = weights;
   }
 
+  /**
+   * Gibt den Profit des Objektes aus
+   *
+   * @return Profit
+   */
   public int getProfit() {
     return this.profit;
   }
 
+  /**
+   * Gibt die Gewichtsdimension zurück
+   *
+   * @return  Gewichtsdimension des Objektes
+   */
   public int getK() {
     return this.weights.length;
   }
 
+  /**
+   * Gibt die K Gewichte des Objektes als Array zurück
+   *
+   * @return  Gewichte des Objektes
+   */
   public int[] getWeights() {
     return weights;
   }
 
+  /**
+   * Gibt das i-te Gewicht der K Gewichte des Objektes zurück, erzeugt einen AssertionError wenn i >= k gilt
+   *
+   * @param i Index des Gewichtes
+   * @return  i-tes Gewicht
+   */
   public int getWeight(int i) {
     assert i < weights.length;
     return weights[i];
   }
 
+  /**
+   * Gibt die ObjektID zur bestimmung des Objektes zurück
+   *
+   * @return  ObjektID
+   */
   public int getItemID() {
     return this.itemID;
   }
