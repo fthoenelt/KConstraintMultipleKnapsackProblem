@@ -2,6 +2,7 @@ package test;
 
 import ganew.Chromosom;
 import ganew.PermGA;
+import ganew.PermGA.Mutator;
 import ganew.crossover.CycleCrossover;
 import ganew.crossover.PartiallyMatchedCrossover;
 import ganew.population.InitializeFeasiblePopulation;
@@ -36,8 +37,8 @@ public class TestNewGA {
       Solution sGreedy = GreedySolution.getGreedy(knapsack);
       long endGreedy = System.currentTimeMillis();
       long startGA = System.currentTimeMillis();
-      Chromosom s = new PermGA(knapsack, popSize, maxSize, new TimeStopper(10000), 1.0,1.0, new TournamentSelection(5), popSize,
-          new PartiallyMatchedCrossover(), new SteadyStateReplacer(true, true, 0.5)).solve();
+      Chromosom s = new PermGA(knapsack, popSize,  new TimeStopper(10000), 1.0,1.0, new TournamentSelection(5),
+          new PartiallyMatchedCrossover(), new SteadyStateReplacer(true, true, 0.5), Mutator.SWAP).solve();
       long endGA = System.currentTimeMillis();
       p+=s.getFitness();
       t+= endGA-startGA;

@@ -34,4 +34,18 @@ public class TestNewOrderBasedCrossover {
     System.out.println("Child:"+child.getSolution().toString());
   }
 
+  @Test
+  public void test(){
+    KConstraintMultipleKnapsack knapsack = GenerateTestInstances.generateTestInstance(100, 3, 10, 2, 0.7);
+    List<Integer> p1Items = IntStream.range(0, knapsack.getNrItems()).boxed().collect(Collectors.toList());
+    Collections.shuffle(p1Items);
+    Chromosom p1 = new Chromosom(p1Items, knapsack);
+
+    System.out.println(p1.getSolution().toString());
+
+    p1.shuffle(3,7);
+
+    System.out.println(p1.getSolution().toString());
+  }
+
 }

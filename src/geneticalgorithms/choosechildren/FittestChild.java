@@ -10,7 +10,6 @@ import knapsack.Solution;
  * die beste Fitness besitzt
  */
 public class FittestChild implements ChooseChildren{
-  //TODO: ggf direkt immer 2 Kinder vergleichen oder Optional returnen
 
   /**
    * Methode die das fitteste Individuum aus einem Array von Individuen wählt und zurückgibt

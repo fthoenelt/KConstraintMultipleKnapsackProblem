@@ -31,12 +31,8 @@ public class PartiallyMatchedCrossover implements Crossover{
   public Chromosom crossover(KConstraintMultipleKnapsack knapsack, Chromosom p1, Chromosom p2) {
     List<Integer> child = new ArrayList<>(p1.getSolution());
     //Wähle zufällige Crossover-Punkte
-    int cp1 = random.nextInt(knapsack.getNrItems()-2);
+    int cp1 = random.nextInt(knapsack.getNrItems()-1);
     int cp2 = cp1+ random.nextInt(knapsack.getNrItems()-cp1);
-    //Stelle sicher dass die Crossover-Punkte nicht identisch sind
-    while(cp1 == cp2){
-      cp2 = cp1+ random.nextInt(knapsack.getNrItems()-cp1);
-    }
     //Tausche die Allele zwischen den Crossover-Punkten mit denen, welche an den selben Stellen im anderen Elternteil vorkommen
     for(int i = cp1; i <= cp2; i++){
       Collections.swap(child, i, child.indexOf(p2.getSolution().get(i)));

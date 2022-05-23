@@ -23,7 +23,6 @@ public class TestGreedySolution {
 
     Solution solution = GreedySolution.getGreedy(knapsack);
 
-    //TODO: Hier nochmal testen!
     assert solution.isFeasible();
     for(Knapsack k: knapsack.getKnapsacks()){
       for(Item i: knapsack.getItems()){

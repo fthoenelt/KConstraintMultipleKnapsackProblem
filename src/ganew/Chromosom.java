@@ -2,6 +2,7 @@ package ganew;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import knapsack.KConstraintMultipleKnapsack;
 import knapsack.Solution;
@@ -69,6 +70,15 @@ public class Chromosom {
   this.fitness = updateFitness();
  }
 
+ public void shuffle(int index1, int index2){
+  Collections.shuffle(this.solution.subList(index1, index2));
+  this.fitness = updateFitness();
+ }
+
+ public void order(int index1, int index2){
+  this.solution.sort((o1, o2) -> Integer.compare(knapsack.getItem(o2).getProfit(), knapsack.getItem(o1).getProfit()));
+  this.fitness = updateFitness();
+ }
  /**
   * Methode, welche die Fitness des Chromosoms berechnet. Hierfür wird die oben beschriebene Heuristik verwendet und aus der daraus entstehenden Lösung der Zielfunktionswert
   * berechnet

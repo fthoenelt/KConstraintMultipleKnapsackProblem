@@ -54,7 +54,7 @@ public class SteadyStateReplacer implements Replacer{
       //Die alte Generation wird besteigend nach ihrer Fitness sortiert
       oldPop.sort((o1, o2) -> Integer.compare(o2.getFitness(),o1.getFitness()));
       if(duplicates){
-        //Wenn Duplikate erlaubt sind kann die Lücke in der neuen Population mit Individuen der alten aufgefüllt werden, in der Reihenfolge wie sie sortiert sind
+        //Wenn Duplikate erlaubt sind kann die Lücke in der neuen Population mit Individuen der alten aufgefüllt werden, in sortierter Reihenfolge
         newPop.addAll(oldPop.subList(0, size - newPop.size()));
       }else{
         //Wenn Duplikate nicht erlaubt sind muss vor dem Hinzufügen der Individuen aus der alten Generation geprüft werden, ob diese schon in der neuen Generation vorkommen

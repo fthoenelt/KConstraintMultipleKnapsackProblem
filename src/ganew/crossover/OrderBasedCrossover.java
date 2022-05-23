@@ -33,11 +33,7 @@ public class OrderBasedCrossover implements Crossover{
     Integer[] child = new Integer[knapsack.getNrItems()];
     //Wähle die Crossover-Punkte
     int cp1 = random.nextInt(knapsack.getNrItems()-1);
-    int cp2 = cp1 + random.nextInt(knapsack.getNrItems()-cp1-2);
-    //Stelle sicher, dass diese nicht identisch sind
-    while(cp1 == cp2){
-      cp2 = cp1+ random.nextInt(knapsack.getNrItems()-cp1-1);
-    }
+    int cp2 = cp1 + random.nextInt(knapsack.getNrItems()-cp1);
     //Speichert, welche Allele schon in dem Kinderchromosom vorkommen
     HashSet<Integer> used = new HashSet<>();
     for(int i = cp1; i <= cp2; i++){

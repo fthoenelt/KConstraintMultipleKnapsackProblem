@@ -6,6 +6,10 @@ import java.util.Random;
 import knapsack.KConstraintMultipleKnapsack;
 import knapsack.Solution;
 
+/**
+ * Hauptklasse des Simulated Annealing Algorithmus für das K-MKP
+ */
+
 public class SimulatedAnnealing {
   KConstraintMultipleKnapsack knapsack;
   StartSolution startSolution;
@@ -13,7 +17,7 @@ public class SimulatedAnnealing {
   StopCriteria stopCriteria;
   Acceptor acceptor;
   Random rand;
-
+  
   public SimulatedAnnealing(KConstraintMultipleKnapsack knapsack, StartSolution startSolution, Neighborhood neighborhood, StopCriteria stopCriteria, Acceptor acceptor){
     this.knapsack = knapsack;
     this.startSolution = startSolution;

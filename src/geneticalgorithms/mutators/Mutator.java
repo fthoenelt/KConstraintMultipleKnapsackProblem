@@ -3,7 +3,7 @@ package geneticalgorithms.mutators;
 import knapsack.Solution;
 
 /**
- * Interface welches die Mutation in Genetischen Algorithmen beschreibt. Dabei werden durch Rekombination erzeugte Nachfahrenchromosome zufällig und lokal verändert, um sowohl
+ * Interface welches die Mutation in genetischen Algorithmen beschreibt. Dabei werden durch Rekombination erzeugte Nachfahrenchromosome zufällig und lokal verändert, um sowohl
  * Variation zu simulieren als auch den Suchraum möglichst vollständig zu betrachten
  */
 
@@ -18,7 +18,7 @@ public interface Mutator {
   Solution mutate(Solution chromosom);
 
   /**
-   * Gibt an ob die Mutation nur zulässige oder auch unzulässige Individuen erzeugt
+   * Gibt, an ob die Mutation nur zulässige oder auch unzulässige Individuen erzeugt
    *
    * @return  true gdw. nur zulässige Lösungen erzeugt werden
    */

@@ -19,43 +19,40 @@ public class PermGA {
 
   KConstraintMultipleKnapsack knapsack;
   int popSize;
-  int maxSize;
   StopCriteria criteria;
   Random random;
   double crossoverProb;
   double mutationProb;
   Selector selector;
-  int poolSize;
   Crossover crossover;
   Replacer replacer;
+  Mutator mutator;
 
   /**
    * Konstruktor für den PermGA. Hierbei werden sowohl die zu optimierende K-MKP-Instanz als auch die Parameter des GAs gesetzt, um diesen zu konfigurieren
    *
    * @param knapsack  Die K-MKP-Instanz, für welche der PermGA eine möglichst gute Lösung berechnen soll
    * @param popSize Die Größe der Population von Individuen
-   * @param maxSize Die maximale Größe der Population
    * @param criteria  Das Abbruchkriterium des PermGAs
    * @param crossoverProb Die Wahrscheinlichkeit mit welcher ein Crossover stattfindet
    * @param mutationProb  Die Wahrscheinlichkeit mit welcher ein durch Rekombination erzeugtes Individuum mutiert wird
    * @param selector  Der Selektor, welcher in dem PermGA verwendet wird
-   * @param poolSize  Die Größe des Mating Pools
    * @param crossover Das verwendete Crossover um die Rekombination von Chromosomen zu ermöglichen
    * @param replacer  Die Ersetzungsstrategie, welche bestimmt, inwiefern die neue Generation die alte ersetzt
+   * @param mutator Der Mutator, welcher angewendet werden soll
    */
-  public PermGA(KConstraintMultipleKnapsack knapsack, int popSize, int maxSize, StopCriteria criteria, double crossoverProb, double mutationProb,
-      Selector selector, int poolSize, Crossover crossover, Replacer replacer) {
+  public PermGA(KConstraintMultipleKnapsack knapsack, int popSize, StopCriteria criteria, double crossoverProb, double mutationProb,
+      Selector selector, Crossover crossover, Replacer replacer, Mutator mutator) {
     this.knapsack = knapsack;
     this.popSize = popSize;
-    this.maxSize = maxSize;
     this.criteria = criteria;
     this.random = new Random();
     this.crossoverProb = crossoverProb;
     this.mutationProb = mutationProb;
     this.selector = selector;
-    this.poolSize = poolSize;
     this.crossover = crossover;
     this.replacer = replacer;
+    this.mutator = mutator;
   }
 
   /**
@@ -77,18 +74,17 @@ public class PermGA {
         bestFit = c.getFitness();
       }
     }
-    boolean action = false;
     //Solange das Abbruchkriterium nicht erfüllt ist, erzeuge neue Generationen
-    while (!criteria.stop(action)) {
+    while (!criteria.stop(false)) {
       //Neue, noch leere Generation
       List<Chromosom> newPop = new ArrayList<>(popSize);
       //Erzeuge den Mating Pool mit dem Selektor und der alten Generation
-      List<Chromosom> matingPool = selector.createMatingPool(population, poolSize);
+      List<Chromosom> matingPool = selector.createMatingPool(population, popSize);
       //Und erzeuge iterativ neue Individuen bis die neue Generation die gewünschte Größe hat
       while (newPop.size() <= popSize) {
         //Wähle dazu zufällig zwei Elternindividuen aus dem Mating Pool
-        Chromosom p1 = matingPool.get(random.nextInt(poolSize));
-        Chromosom p2 = matingPool.get(random.nextInt(poolSize));
+        Chromosom p1 = matingPool.get(random.nextInt(popSize));
+        Chromosom p2 = matingPool.get(random.nextInt(popSize));
         Chromosom chromosom;
         //Rekombiniere die beiden gewählten Elternindividuen mit der Crossover-Wahrscheinlichkeit aus dem Konstruktor
         if (random.nextDouble() < crossoverProb) {
@@ -102,7 +98,13 @@ public class PermGA {
         if (random.nextDouble() < mutationProb) {
           int index1 = random.nextInt(knapsack.getNrKnapsacks());
           int index2 = random.nextInt(knapsack.getNrKnapsacks());
-          chromosom.swap(index1, index2);
+          //Wähle hierbei den entsprechenden Mutator
+          switch(mutator){
+            case SWAP -> chromosom.swap(index1, index2);
+            case SHUFFLE -> chromosom.shuffle(index1, index2);
+            case ORDER -> chromosom.order(index1, index2);
+          }
+
         }
         //Füge das Kinderchromosom der neuen Population hinzu
         newPop.add(chromosom);
@@ -113,11 +115,14 @@ public class PermGA {
         }
       }
       //Wenn die neue Generation komplett gefüllt wurde ersetze die alte Population mit der neuen
-      population = replacer.replace(population, newPop, maxSize);
+      population = replacer.replace(population, newPop, popSize);
     }
     //Zuletzt gebe die beste gefundene Lösung aus
     return best;
   }
 
+  public enum Mutator{
+    SWAP, SHUFFLE, ORDER;
+  }
 
 }

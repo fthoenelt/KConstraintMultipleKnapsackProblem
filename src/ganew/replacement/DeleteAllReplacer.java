@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * Klasse welche das Replacer-Interface für den PermGA implementiert. Dabei wird die Delete-All Strategie verwendet, bei welcher die alte Population komplett gelöscht und
- * durch die neue ersetzt wird. Für den Fall dass die neue Population größer als gewünscht ist werden nur die ersten Einträge genommen, sollte sie kleiner als gewünscht sein
+ * durch die neue ersetzt wird. Für den Fall, dass die neue Population größer als gewünscht ist, werden nur die ersten Einträge genommen, sollte sie kleiner als gewünscht sein
  * werden Individuen aus der alten Population übernommen.
  */
 
@@ -21,11 +21,11 @@ public class DeleteAllReplacer implements Replacer{
    */
   @Override
   public List<Chromosom> replace(List<Chromosom> oldPop, List<Chromosom> newPop, int size) {
-    //Für den Fall dass die neue Population größer als gewünscht ist wird die Liste newPop auf die gewünschte Größe gekürzt
+    //Für den Fall, dass die neue Population größer als gewünscht ist, wird die Liste newPop auf die gewünschte Größe gekürzt
     if(newPop.size()>size){
       newPop.subList(0, size);
     }else if (newPop.size()< size){
-      //In dem Fall dass die neue Population kleiner als gewünscht ist wird die Liste newPop mit Individuen der alten Generation gefüllt
+      //In dem Fall, dass die neue Population kleiner als gewünscht ist, wird die Liste newPop mit Individuen der alten Generation gefüllt
       newPop.addAll(oldPop.subList(0, size - newPop.size()));
     }
     return newPop;

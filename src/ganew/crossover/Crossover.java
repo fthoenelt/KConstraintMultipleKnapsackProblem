@@ -4,7 +4,7 @@ import ganew.Chromosom;
 import knapsack.KConstraintMultipleKnapsack;
 
 /**
- * Interface für ein beliebiges Crossover
+ * Interface für ein beliebiges Crossover bei welchem aus zwei gewählten Elternchromosomen ein neues Kinderchromosom erzeugt wird, welches Eigenschaften beider Eltern teilt
  */
 
 public interface Crossover {

@@ -36,7 +36,7 @@ public class FitnessProportional implements Selector{
       fitSum += fitnesses[i];
     }
     //Die Liste ratios repräsentiert das Rouletterad. Dafür wird in jedem Schritt die relative Fitness des Individuums als Quotient aus der eigenen Fitness und der Summe aller
-    // Fitness' berechnet und diese dann iterativ aufsummiert wordurch kumulierte Wahrscheinlichkeiten berechnet werden.
+    // Fitness' berechnet und diese dann iterativ aufsummiert wodurch kumulierte Wahrscheinlichkeiten berechnet werden.
     ArrayList<Double> ratios = new ArrayList<>(population.size());
     for(int i = 0; i < population.size(); i++){
       if(i==0){
